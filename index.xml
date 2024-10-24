@@ -23,7 +23,9 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 
 
 <title-group>
-<article-title>Manuscript Title</article-title>
+<article-title>Mapping potential lineaments across the State of Arizona
+to aid in mapping suitability for opportunistic recharge
+enhancement</article-title>
 </title-group>
 
 <contrib-group>
@@ -59,10 +61,10 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 <corresp id="cor-1">Ryan.lima@nau.edu</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-10-22">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-10-24">
 <year>2024</year>
 <month>10</month>
-<day>22</day>
+<day>24</day>
 </pub-date>
 
 
@@ -78,8 +80,8 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 <p>Abstract Text….</p>
 </abstract>
 <kwd-group kwd-group-type="author">
-<kwd>Keyword 1</kwd>
-<kwd>Keyword 2</kwd>
+<kwd>Lineaments</kwd>
+<kwd>Recharge</kwd>
 </kwd-group>
 
 
@@ -90,124 +92,97 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 </front>
 
 <body>
-<sec id="introduction">
+<sec id="sec-introudction">
   <title>1 Introduction</title>
-  <p>Studies thinning effects in Ponderosa Pine forests found …..
-  (<xref alt="Baker 1986" rid="ref-baker_effects_1986" ref-type="bibr">Baker
-  1986</xref>)</p>
-  <p>Data and methods are discussed in
-  <xref alt="Section 2" rid="sec-data-methods">Section 2</xref>.</p>
-  <p>Let <inline-formula><alternatives>
-  <tex-math><![CDATA[x]]></tex-math>
-  <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>x</mml:mi></mml:math></alternatives></inline-formula>
-  denote the number of eruptions in a year. Then,
-  <inline-formula><alternatives>
-  <tex-math><![CDATA[x]]></tex-math>
-  <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>x</mml:mi></mml:math></alternatives></inline-formula>
-  can be modeled by a Poisson distribution</p>
-  <p><styled-content id="eq-poisson"><disp-formula><alternatives>
-  <tex-math><![CDATA[
-  p(x) = \frac{e^{-\lambda} \lambda^{x}}{x !}
-   \qquad(1)]]></tex-math>
-  <mml:math display="block" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mrow><mml:mi>p</mml:mi><mml:mrow><mml:mo stretchy="true" form="prefix">(</mml:mo><mml:mi>x</mml:mi><mml:mo stretchy="true" form="postfix">)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:msup><mml:mi>e</mml:mi><mml:mrow><mml:mi>−</mml:mi><mml:mi>λ</mml:mi></mml:mrow></mml:msup><mml:msup><mml:mi>λ</mml:mi><mml:mi>x</mml:mi></mml:msup></mml:mrow><mml:mrow><mml:mi>x</mml:mi><mml:mi>!</mml:mi></mml:mrow></mml:mfrac><mml:mspace width="2.0em"></mml:mspace><mml:mrow><mml:mo stretchy="true" form="prefix">(</mml:mo><mml:mn>1</mml:mn><mml:mo stretchy="true" form="postfix">)</mml:mo></mml:mrow></mml:mrow></mml:math></alternatives></disp-formula></styled-content></p>
-  <p>where <inline-formula><alternatives>
-  <tex-math><![CDATA[\lambda]]></tex-math>
-  <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>λ</mml:mi></mml:math></alternatives></inline-formula>
-  is the rate of eruptions per year. Using
-  <xref alt="Equation 1" rid="eq-poisson">Equation 1</xref>, the
-  probability of an eruption in the next <inline-formula><alternatives>
-  <tex-math><![CDATA[t]]></tex-math>
-  <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>t</mml:mi></mml:math></alternatives></inline-formula>
-  years can be calculated.</p>
-  <fig id="tbl-1">
-    <caption><p>Table 1: Table Title</p></caption>
-    <table-wrap>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>a</td>
-            <td>2021</td>
-          </tr>
-          <tr>
-            <td>b</td>
-            <td>1971</td>
-          </tr>
-          <tr>
-            <td>c</td>
-            <td>1949</td>
-          </tr>
-          <tr>
-            <td>d</td>
-            <td>1712</td>
-          </tr>
-          <tr>
-            <td>e</td>
-            <td>1677</td>
-          </tr>
-          <tr>
-            <td>f</td>
-            <td>1646</td>
-          </tr>
-          <tr>
-            <td>g</td>
-            <td>1585</td>
-          </tr>
-          <tr>
-            <td>h</td>
-            <td>1492</td>
-          </tr>
-        </tbody>
-      </table>
-    </table-wrap>
-  </fig>
-  <p><xref alt="Table 1" rid="tbl-1">Table 1</xref> Description of Table
-  1 or caption</p>
-  <fig id="fig-map">
-    <caption><p>Figure 1: Map of La Palma</p></caption>
-    <graphic mimetype="image" mime-subtype="png" xlink:href="images/la-palma-map.png" />
-  </fig>
-  <p>La Palma is one of the west most islands in the Volcanic
-  Archipelago of the Canary Islands
-  (<xref alt="Figure 1" rid="fig-map">Figure 1</xref>).</p>
 </sec>
 <sec id="sec-data-methods">
   <title>2 Data &amp; Methods</title>
 </sec>
-<sec id="conclusion">
+<sec id="sec-conclusion">
   <title>3 Conclusion</title>
+</sec>
+<sec id="references">
+  <title>References</title>
 </sec>
 </body>
 
 <back>
-<ref-list>
-  <title>References</title>
-  <ref id="ref-baker_effects_1986">
-    <element-citation publication-type="article-journal">
-      <person-group person-group-type="author">
-        <name><surname>Baker</surname><given-names>Malchus B.</given-names></name>
-      </person-group>
-      <article-title>Effects of Ponderosa Pine Treatments on Water Yield in Arizona</article-title>
-      <source>Water Resources Research</source>
-      <year iso-8601-date="1986-01">1986</year><month>01</month>
-      <date-in-citation content-type="access-date"><year iso-8601-date="2024-10-01">2024</year><month>10</month><day>01</day></date-in-citation>
-      <volume>22</volume>
-      <issue>1</issue>
-      <issn>0043-1397, 1944-7973</issn>
-      <uri>https://agupubs.onlinelibrary.wiley.com/doi/10.1029/WR022i001p00067</uri>
-      <pub-id pub-id-type="doi">10.1029/WR022i001p00067</pub-id>
-      <fpage>67</fpage>
-      <lpage>73</lpage>
-    </element-citation>
-  </ref>
-</ref-list>
 </back>
 
+<sub-article article-type="notebook" id="nb-9-nb-article">
+<front-stub>
+<title-group>
+<article-title>Mapping potential lineaments across the State of Arizona
+to aid in mapping suitability for opportunistic recharge
+enhancement</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+<email>Ryan.lima@nau.edu</email>
+<role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>
+<role vocab="https://credit.niso.org" vocab-term="software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">Software</role>
+<role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">Visualization</role>
+<xref ref-type="aff" rid="aff-1-nb-article">a</xref>
+<xref ref-type="corresp" rid="cor-1-nb-article">&#x002A;</xref>
+</contrib>
+</contrib-group>
+<aff id="aff-1-nb-article">
+<institution-wrap>
+<institution>Northern Arizona University</institution>
+</institution-wrap>
+
+
+
+
+
+
+
+</aff>
+<author-notes>
+<corresp id="cor-1-nb-article">Ryan.lima@nau.edu</corresp>
+</author-notes>
+<abstract>
+<p>Abstract Text….</p>
+</abstract>
+</front-stub>
+
+<body>
+<sec id="cell-1-nb-article" specific-use="notebook-content">
+<sec id="sec-introudction-nb-article">
+  <title>1 Introduction</title>
+  </sec>
+  <sec id="cell-2-nb-article" specific-use="notebook-content">
+</sec>
+<sec id="sec-data-methods-nb-article">
+  <title>2 Data &amp; Methods</title>
+  </sec>
+  <sec id="cell-3-nb-article" specific-use="notebook-content">
+</sec>
+<sec id="sec-conclusion-nb-article">
+  <title>3 Conclusion</title>
+  </sec>
+  <sec id="cell-4-nb-article" specific-use="notebook-content">
+</sec>
+<sec id="references-nb-article">
+  <title>References</title>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
 <sub-article article-type="notebook" id="nb-3-nb-1">
 <front-stub>
 <title-group>
@@ -229,6 +204,233 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 <body>
 <sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-1" specific-use="notebook-content">
 <p>Text description</p>
+</sec>
+<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-1" specific-use="notebook-content">
+<code language="python">## Install libraries if not installed
+#!pip install geopandas </code>
+</sec>
+<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-1" specific-use="notebook-content">
+<code language="python">import os
+import numpy as np
+import matplotlib.pyplot as plt
+import rasterio
+import geopandas as gpd
+from rasterio.plot import show
+from rasterio.mask import mask
+from matplotlib import colors
+from skimage import feature, measure, morphology
+from skimage.draw import line
+from scipy.ndimage import gaussian_filter
+from scipy.spatial.distance import euclidean
+from math import atan2, degrees
+from skimage.measure import approximate_polygon, find_contours
+</code>
+</sec>
+<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-1" specific-use="notebook-content">
+<code language="python">DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif'
+study_area_shapefile_path = 'Data/Vectors/LakeMaryStudyArea_Bound.shp'
+</code>
+</sec>
+<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-1" specific-use="notebook-content">
+<code language="python"># Load the DEM
+with rasterio.open(DEM_URL) as src:
+    DEM = src.read(1)  # Load the DEM as a NumPy array
+    transform = src.transform
+    crs = src.crs
+    dem_bounds = src.bounds
+    nodata = src.nodata  # Capture the nodata value
+    print(&quot;DEM bounds:&quot;, dem_bounds)
+    print(&quot;DEM nodata value:&quot;, nodata)</code>
+<boxed-text>
+  <preformat>DEM bounds: BoundingBox(left=-112.00055555619338, bottom=34.9994444441067, right=-110.99944444400529, top=36.000555556294785)
+DEM nodata value: -999999.0</preformat>
+</boxed-text>
+</sec>
+<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-1" specific-use="notebook-content">
+<code language="python">study_area = gpd.read_file(study_area_shapefile_path)
+</code>
+</sec>
+<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-1" specific-use="notebook-content">
+<code language="python"># Reproject the shapefile to match DEM CRS
+study_area = study_area.to_crs(crs)
+print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
+<boxed-text>
+  <preformat>Shapefile bounds: [-111.62501107   35.12500537 -111.56251105   35.18750538]</preformat>
+</boxed-text>
+</sec>
+<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-1" specific-use="notebook-content">
+<code language="python"># Clip the DEM to the shapefile geometry
+geoms = study_area.geometry.values  # Get the geometries from the GeoDataFrame
+geoms = [geom.__geo_interface__ for geom in geoms]  # Convert to GeoJSON format</code>
+</sec>
+<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-1" specific-use="notebook-content">
+<code language="python">with rasterio.open(DEM_URL) as src:
+    out_image, out_transform = mask(src, geoms, crop=True)
+    out_meta = src.meta</code>
+</sec>
+<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-1" specific-use="notebook-content">
+<code language="python"># Mask the nodata values
+out_image = np.ma.masked_equal(out_image, nodata)</code>
+</sec>
+<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-1" specific-use="notebook-content">
+<code language="python"># Check DEM range
+print(&quot;DEM min:&quot;, np.min(out_image))
+print(&quot;DEM max:&quot;, np.max(out_image))</code>
+<boxed-text>
+  <preformat>DEM min: 1998.0142
+DEM max: 2179.7163</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-1" specific-use="notebook-content">
+<code language="python"># Normalize the DEM values for better visualization
+norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+
+# Plot the clipped DEM
+fig, ax = plt.subplots(figsize=(10, 10))
+show(out_image, transform=out_transform, cmap='viridis', ax=ax, norm=norm)
+
+# Overlay the shapefile
+study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+
+plt.title('Clipped DEM with Study Area')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-12-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-1" specific-use="notebook-content">
+<code language="python"># Update metadata to reflect new dimensions and transform
+out_meta.update({
+    &quot;driver&quot;: &quot;GTiff&quot;,
+    &quot;height&quot;: out_image.shape[1],
+    &quot;width&quot;: out_image.shape[2],
+    &quot;transform&quot;: out_transform
+})</code>
+</sec>
+<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-1" specific-use="notebook-content">
+<code language="python"># Save the clipped DEM
+output_path = &quot;Data/Rasters/clipped_dem.tif&quot;
+with rasterio.open(output_path, 'w', **out_meta) as dest:
+    # Write the first band (use out_image[0] since it has shape (1, height, width))
+    dest.write(out_image[0].filled(nodata), 1)  # Fill the masked values with nodata
+print(f&quot;Clipped DEM saved to {output_path}&quot;)</code>
+<boxed-text>
+  <preformat>Clipped DEM saved to Data/Rasters/clipped_dem.tif</preformat>
+</boxed-text>
+</sec>
+<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-1" specific-use="notebook-content">
+<code language="python">DEM10m = out_image
+
+# Optionally, plot the clipped DEM
+fig, ax = plt.subplots(figsize=(10, 10))
+norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+show(DEM10m, transform=out_transform, cmap='viridis', ax=ax, norm=norm)
+study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+plt.title('Clipped DEM with Study Area')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-15-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-1" specific-use="notebook-content">
+<code language="python"># Load Faults
+
+faults_URL = 'Data/Vectors/Faults.shp'
+faults = gpd.read_file(faults_URL)
+faults = faults.to_crs(crs)
+print(&quot;Shapefile bounds:&quot;, faults.total_bounds)
+
+# Load Contacts
+
+contacts_URL = 'Data/Vectors/Contacts.shp'
+contacts = gpd.read_file(contacts_URL)
+contacts = contacts.to_crs(crs)
+print(&quot;Shapefile bounds:&quot;, contacts.total_bounds)</code>
+<boxed-text>
+  <preformat>Shapefile bounds: [-111.62501105   35.12500939 -111.59149268   35.18750927]
+Shapefile bounds: [-111.62501107   35.12500543 -111.56251097   35.18750938]</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-1" specific-use="notebook-content">
+<code language="python"># Plot the clipped DEM, study area, and faults
+fig, ax = plt.subplots(figsize=(10, 10))
+
+# Normalize the DEM values for better visualization
+norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+
+# Plot the DEM
+show(out_image, transform=out_transform, cmap='terrain', ax=ax, norm=norm)
+
+# Plot the study area boundary
+study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+
+# Plot the faults
+faults.plot(ax=ax, edgecolor='blue', linewidth=1, linestyle='--')
+contacts.plot(ax=ax, edgecolor = 'red', linewidth = 0.75, linestyle='-.')
+
+plt.title('Clipped DEM with Study Area and Faults')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-17-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-1" specific-use="notebook-content">
+<code language="python"># create multiple hillshades </code>
+</sec>
+<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-1" specific-use="notebook-content">
+<code language="python"># Function to apply Gaussian smoothing and Canny edge detection
+def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
+    # Step 1: Replace masked values (nodata) with the median of the valid data
+    filled_dem_data = dem_data.filled(np.median(dem_data))  # Fill masked areas with the median
+    
+    # Step 2: Apply Gaussian smoothing
+    smoothed_dem = gaussian_filter(filled_dem_data, sigma=sigma)
+    
+    # Step 3: Reapply the mask after smoothing (keep the masked regions as nodata)
+    smoothed_dem = np.ma.masked_where(mask, smoothed_dem)  # Reapply the mask
+    
+    # Step 4: Apply Canny edge detection with adjusted thresholds (on the unmasked regions)
+    edges = feature.canny(smoothed_dem, low_threshold=gthr_low, high_threshold=gthr_high)
+    
+    # Return both smoothed DEM and detected edges for visualization
+    return smoothed_dem, edges</code>
+</sec>
+<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-1" specific-use="notebook-content">
+<code language="python"># Example parameters for the Canny filter
+sigma = 1.0
+gthr_low = 3
+gthr_high = 10
+
+# Ensure dem_data is 2D and get the mask for nodata values
+dem_data = out_image[0] if out_image.ndim &gt; 2 else out_image  # Adjust for possible 3D array
+mask = dem_data.mask  # Extract the mask from the masked array
+
+# Apply the Canny filter
+smoothed_dem, edges = apply_canny_filter(dem_data, mask, sigma=sigma, gthr_low=gthr_low, gthr_high=gthr_high)</code>
+</sec>
+<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-1" specific-use="notebook-content">
+<code language="python"># Plot the results
+fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+
+# Plot smoothed DEM
+ax[0].imshow(smoothed_dem, cmap='terrain')
+ax[0].set_title('Smoothed DEM')
+
+# Plot edges
+ax[1].imshow(edges, cmap='gray')
+ax[1].set_title('Canny Edges')
+
+
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-22-output-1.png" />
+</boxed-text>
 </sec>
 </body>
 
