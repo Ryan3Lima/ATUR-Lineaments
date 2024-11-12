@@ -1,13 +1,12 @@
 project:
   type: manuscript
-
 format:
   html:
     toc: true
     comments:
       hypothesis: true
-  docx: default
   jats: default
+  docx: default
   agu-pdf: default
 
 
