@@ -61,10 +61,10 @@ enhancement</article-title>
 <corresp id="cor-1">Ryan.lima@nau.edu</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-10-24">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-12">
 <year>2024</year>
-<month>10</month>
-<day>24</day>
+<month>11</month>
+<day>12</day>
 </pub-date>
 
 
@@ -109,7 +109,7 @@ enhancement</article-title>
 <back>
 </back>
 
-<sub-article article-type="notebook" id="nb-9-nb-article">
+<sub-article article-type="notebook" id="nb-15-nb-article">
 <front-stub>
 <title-group>
 <article-title>Mapping potential lineaments across the State of Arizona
@@ -186,6 +186,324 @@ enhancement</article-title>
 <sub-article article-type="notebook" id="nb-3-nb-1">
 <front-stub>
 <title-group>
+<article-title>03 Esri and Catalyst Workflow</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<sec id="cell-2ace132c-d221-4f39-9ce9-71401d244436-nb-1" specific-use="notebook-content">
+<sec id="import-dem-into-arcgis-pro-1m-resolution-lidar-derived-dem_raw-nb-1">
+  <title>1. Import DEM into ArcGIS Pro (1m resolution, Lidar-derived) =
+  <monospace>DEM_Raw</monospace></title>
+  <p><bold><italic>Study Area</italic></bold></p>
+  <p><monospace>USGS_1M_12_x50y381_AZ_USFS_3DEP_Processing_2019_D20.tif</monospace>
+  = <monospace>DEM_raw</monospace></p>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Load_DEM_step_1.PNG" />
+  </sec>
+  <sec id="e3fb4f6e-5f2b-4a90-a6c0-6f04fe3b66ec-nb-1" specific-use="notebook-content">
+</sec>
+<sec id="use-focal-statistics-to-calculate-the-mean-raster-using-a-circular-window-and-a-20m-window-meanc20-nb-1">
+  <title>2. use ‘Focal Statistics’ to calculate the mean raster using a
+  circular window and a 20m window =
+  <monospace>MeanC20</monospace></title>
+  <p><bold>Calculate Topographic Position Index</bold></p>
+  <list list-type="bullet">
+    <list-item>
+      <p><monospace>C</monospace> refers to the Circular window used in
+      focal statistics</p>
+    </list-item>
+    <list-item>
+      <p><monospace>20</monospace> is the window size in cells (*also
+      meters in this case)</p>
+    </list-item>
+  </list>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Focal_statistics_step_2.PNG" />
+  </sec>
+  <sec id="cell-71a27272-078a-4659-a864-de2b7190bdea-nb-1" specific-use="notebook-content">
+</sec>
+<sec id="calculate-tpi-or-topographic-position-index-using-raster-calculator-by-subtracting-the-mean-raster-from-the-dem_raw-nb-1">
+  <title>3. Calculate TPI or topographic position index using
+  <monospace>Raster Calculator</monospace> by subtracting the Mean
+  raster from the DEM_Raw</title>
+  <p><monospace>TPI_C20 = DEM_Raw - MeanC20</monospace></p>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Calculate_TPI_Step3.PNG" />
+  </sec>
+  <sec id="ce376ee6-f516-4d1a-b77c-4a4d52a694ea-nb-1" specific-use="notebook-content">
+</sec>
+<sec id="export-the-tpi-raster-as-a-rgb-.tiff-nb-1">
+  <title>4. Export the TPI raster as a RGB .TIFF</title>
+  <list list-type="bullet">
+    <list-item>
+      <p>Make sure the Symbology for the TPI_C20 is Stretch, and the
+      stretch type is <monospace>Histogram Equalize</monospace></p>
+    </list-item>
+    <list-item>
+      <p>Right click on <monospace>TPI_C20</monospace> &gt; Data &gt;
+      Export Raster</p>
+      <p specific-use="wrapper">
+        <disp-quote>
+          <p>Do Not Force RGB</p>
+        </disp-quote>
+      </p>
+      <p specific-use="wrapper">
+        <disp-quote>
+          <p>All other defaults should be good</p>
+        </disp-quote>
+      </p>
+    </list-item>
+  </list>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Export_TPI_hist_equalize.PNG" />
+  </sec>
+  <sec id="cc68ae3c-59c9-46dd-b11a-bd55c2a1bc40-nb-1" specific-use="notebook-content">
+</sec>
+<sec id="import-the-tpi-raster-to-catalyst---focus-module-nb-1">
+  <title>5. Import the TPI raster to Catalyst - Focus Module</title>
+  <p><bold>Extract Lineaments</bold></p>
+  <disp-quote>
+    <p>Select the TPI image, then go to <monospace>tools</monospace>
+    &gt; <monospace>Algorithm Librarian</monospace> &gt;
+    <monospace>LINE</monospace></p>
+  </disp-quote>
+  <disp-quote>
+    <p>Use the Following Paramters:</p>
+  </disp-quote>
+  <disp-quote>
+    <p><bold>RADI:</bold> Filter Radius = 15 pixels</p>
+  </disp-quote>
+  <disp-quote>
+    <p><bold>GTHR:</bold> Edge Gradient Threshold 75 brightness
+    0-255</p>
+  </disp-quote>
+  <disp-quote>
+    <p><bold>FTHR:</bold> Line Fitting Threshold 2 pixels</p>
+  </disp-quote>
+  <disp-quote>
+    <p><bold>LTHR:</bold> Curve Length Threshold 45 pixels</p>
+  </disp-quote>
+  <disp-quote>
+    <p><bold>ATHR:</bold> Angular Difference Threshold 20 degrees</p>
+  </disp-quote>
+  <disp-quote>
+    <p><bold>DTHR:</bold> Linking Distance Threshold 25 pixels</p>
+  </disp-quote>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Images/RunLineModule_Catalyst.PNG" />
+  </sec>
+  <sec id="baf84e0a-9658-49fc-8f5c-8d4062b95bab-nb-1" specific-use="notebook-content">
+</sec>
+<sec id="export-the-lineaments-shapefile-from-catalyst-nb-1">
+  <title>6. Export the lineaments Shapefile from Catalyst</title>
+  <list list-type="bullet">
+    <list-item>
+      <p>Click on the Lineament you just created in the Maps pane, Click
+      <monospace>Save As</monospace>, specify a location for the
+      output</p>
+      <p specific-use="wrapper">
+        <disp-quote>
+          <p>My file location and name:
+          <monospace>C:\Users\rl587\GIS_Projects\ATUR-Lineaments\TPI_C20_LineamentsPCI.shp</monospace></p>
+        </disp-quote>
+      </p>
+      <p specific-use="wrapper">
+        <disp-quote>
+          <p>Format : ArcView Shapefile (.shp)</p>
+        </disp-quote>
+      </p>
+    </list-item>
+  </list>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Save_lineaments_shapefile.PNG" />
+  </sec>
+  <sec id="cell-27b50207-f25a-4ee7-9bf9-d85306269de4-nb-1" specific-use="notebook-content">
+</sec>
+<sec id="create-a-roads-and-streams-buffer-remove-lineaments-within-buffer-nb-1">
+  <title>Create a Roads and streams buffer, remove lineaments within
+  Buffer</title>
+  <sec id="open-the-lineaments-shapefile-in-arcgis-pro-nb-1">
+    <title>7. Open the Lineaments shapefile in ArcGIS Pro</title>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Load_Lineaments_shapefile_ArcGISPro.PNG" />
+    <p>Roads are man-made lineaments and streams while they create
+    natural lineaments we are more interested with the shape and
+    orientation of the valley they are in rather than the stream channel
+    itself, creating a buffer around them will allow the valley shape
+    and orientation to be captured without creating an issue where
+    drainage density is too positively correlated with lineament density
+    since we want those two variables to capture different things.</p>
+    <disp-quote>
+      <p>Roads layers were taken from the National Mamp - MapServer:
+      carto.nationalmap.gov.ags &gt; transportation &gt; Large and
+      Medium Scale &gt; Features &gt; layers = Closed Roads, 4WD Roads,
+      Local Roads}</p>
+    </disp-quote>
+    <disp-quote>
+      <p>All road layers clipped to study area and merged =
+      <monospace>Roads_all</monospace></p>
+    </disp-quote>
+    <disp-quote>
+      <p>Stream channels taken from NHD flowlines large-scale, clipped
+      to Study area = <monospace>Flowlines</monospace></p>
+    </disp-quote>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Roads_flowlines.PNG" />
+    </sec>
+    <sec id="b1fbd089-1b80-460c-9fa0-3f96894f95e9-nb-1" specific-use="notebook-content">
+  </sec>
+  <sec id="m-buffer-applied-to-flowlines-stream_buffer15-nb-1">
+    <title>8. 15m buffer applied to <monospace>Flowlines</monospace> =
+    <monospace>Stream_buffer15</monospace></title>
+    <disp-quote>
+      <p>use <monospace>Pairwise Buffer</monospace> tool</p>
+      <p><bold><italic>Tool Paramters</italic></bold></p>
+    </disp-quote>
+    <disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Input Features: <monospace>Flowlines</monospace></p>
+        </list-item>
+      </list>
+    </disp-quote>
+    <disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Output Feature Class:
+          <monospace>FlowlinesBuff15</monospace></p>
+        </list-item>
+      </list>
+    </disp-quote>
+    <disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Distance (value or field) :
+          <monospace>Linear Unit</monospace></p>
+        </list-item>
+      </list>
+    </disp-quote>
+    <disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p><monospace>15</monospace> and
+          <monospace>Meters</monospace></p>
+        </list-item>
+      </list>
+    </disp-quote>
+    <disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Method: <monospace>Planar</monospace></p>
+        </list-item>
+      </list>
+    </disp-quote>
+    <disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Dissolve Type:
+          <monospace>Dissolve all output features into a single feature</monospace></p>
+        </list-item>
+      </list>
+    </disp-quote>
+  </sec>
+  <sec id="m-buffer-applied-to-roads_all-roads_buffer15-nb-1">
+    <title>9. 15m buffer applied to <monospace>Roads_all</monospace> =
+    <monospace>Roads_buffer15</monospace></title>
+    <disp-quote>
+      <p>Repeat steps above for Roads, same parameters</p>
+    </disp-quote>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Pairwise_buffer_roads.PNG" />
+    </sec>
+    <sec id="cell-2adc9634-7735-42e9-b83d-2100d0123f15-nb-1" specific-use="notebook-content">
+  </sec>
+  <sec id="merge-buffers-nb-1">
+    <title>10. Merge Buffers</title>
+    <list list-type="bullet">
+      <list-item>
+        <p>Use the Merge tool to merge
+        <monospace>Stream_buffer15</monospace> and
+        <monospace>Roads_buffer_15</monospace> =
+        <monospace>Exclude_lineaments_buff15</monospace></p>
+      </list-item>
+    </list>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Merge_buffers.PNG" />
+    </sec>
+    <sec id="cell-8ade5775-39af-4339-a07a-136531bac3c0-nb-1" specific-use="notebook-content">
+  </sec>
+  <sec id="select-lineaments-within-buffers-nb-1">
+    <title>11. Select lineaments within buffers</title>
+    <list list-type="bullet">
+      <list-item>
+        <p>Used select by Location,
+        <monospace>TPI_C20_LineamentsPCI</monospace> intersecting with
+        <monospace>Exclude_lineaments_buff15</monospace></p>
+      </list-item>
+    </list>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Select_lineaments_in_buffer.PNG" />
+  </sec>
+  <sec id="delete-lineaements-within-buffers-nb-1">
+    <title>12. Delete Lineaements within buffers</title>
+    <list list-type="bullet">
+      <list-item>
+        <p>Open attribute table and
+        <monospace>delete selected</monospace></p>
+      </list-item>
+    </list>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Delete_selected.PNG" />
+  </sec>
+  <sec id="finished-result-nb-1">
+    <title>13. Finished Result:</title>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Images/Result.PNG" />
+    </sec>
+    <sec id="c1765561-1d8a-4ed1-a4ce-4156c8207229-nb-1" specific-use="notebook-content">
+  </sec>
+</sec>
+<sec id="to-do-list-nb-1">
+  <title>To Do List</title>
+  <list list-type="bullet">
+    <list-item>
+      <p>Test in Lake Mary area</p>
+    </list-item>
+    <list-item>
+      <p>Test on another study area</p>
+    </list-item>
+    <list-item>
+      <p>create esri functions for buffer</p>
+    </list-item>
+    <list-item>
+      <p>Paramterize buffer</p>
+    </list-item>
+    <list-item>
+      <p>Justify buffer</p>
+    </list-item>
+    <list-item>
+      <p>Justify using TPI</p>
+    </list-item>
+    <list-item>
+      <p>Attempt to paramterize TPI in Python</p>
+    </list-item>
+    <list-item>
+      <p>Attempt to improve on LINE algorithm in Python</p>
+    </list-item>
+  </list>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-6-nb-2">
+<front-stub>
+<title-group>
 <article-title>01 Prepare Test Data</article-title>
 </title-group>
 <contrib-group>
@@ -202,14 +520,14 @@ enhancement</article-title>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-1" specific-use="notebook-content">
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-2" specific-use="notebook-content">
 <p>Text description</p>
 </sec>
-<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-1" specific-use="notebook-content">
+<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-2" specific-use="notebook-content">
 <code language="python">## Install libraries if not installed
 #!pip install geopandas </code>
 </sec>
-<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-1" specific-use="notebook-content">
+<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-2" specific-use="notebook-content">
 <code language="python">import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -226,12 +544,12 @@ from math import atan2, degrees
 from skimage.measure import approximate_polygon, find_contours
 </code>
 </sec>
-<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-1" specific-use="notebook-content">
+<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-2" specific-use="notebook-content">
 <code language="python">DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif'
 study_area_shapefile_path = 'Data/Vectors/LakeMaryStudyArea_Bound.shp'
 </code>
 </sec>
-<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-1" specific-use="notebook-content">
+<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-2" specific-use="notebook-content">
 <code language="python"># Load the DEM
 with rasterio.open(DEM_URL) as src:
     DEM = src.read(1)  # Load the DEM as a NumPy array
@@ -246,11 +564,11 @@ with rasterio.open(DEM_URL) as src:
 DEM nodata value: -999999.0</preformat>
 </boxed-text>
 </sec>
-<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-1" specific-use="notebook-content">
+<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-2" specific-use="notebook-content">
 <code language="python">study_area = gpd.read_file(study_area_shapefile_path)
 </code>
 </sec>
-<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-1" specific-use="notebook-content">
+<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-2" specific-use="notebook-content">
 <code language="python"># Reproject the shapefile to match DEM CRS
 study_area = study_area.to_crs(crs)
 print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
@@ -258,21 +576,21 @@ print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
   <preformat>Shapefile bounds: [-111.62501107   35.12500537 -111.56251105   35.18750538]</preformat>
 </boxed-text>
 </sec>
-<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-1" specific-use="notebook-content">
+<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-2" specific-use="notebook-content">
 <code language="python"># Clip the DEM to the shapefile geometry
 geoms = study_area.geometry.values  # Get the geometries from the GeoDataFrame
 geoms = [geom.__geo_interface__ for geom in geoms]  # Convert to GeoJSON format</code>
 </sec>
-<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-1" specific-use="notebook-content">
+<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-2" specific-use="notebook-content">
 <code language="python">with rasterio.open(DEM_URL) as src:
     out_image, out_transform = mask(src, geoms, crop=True)
     out_meta = src.meta</code>
 </sec>
-<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-1" specific-use="notebook-content">
+<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-2" specific-use="notebook-content">
 <code language="python"># Mask the nodata values
 out_image = np.ma.masked_equal(out_image, nodata)</code>
 </sec>
-<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-1" specific-use="notebook-content">
+<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-2" specific-use="notebook-content">
 <code language="python"># Check DEM range
 print(&quot;DEM min:&quot;, np.min(out_image))
 print(&quot;DEM max:&quot;, np.max(out_image))</code>
@@ -281,7 +599,7 @@ print(&quot;DEM max:&quot;, np.max(out_image))</code>
 DEM max: 2179.7163</preformat>
 </boxed-text>
 </sec>
-<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-1" specific-use="notebook-content">
+<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-2" specific-use="notebook-content">
 <code language="python"># Normalize the DEM values for better visualization
 norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
 
@@ -300,7 +618,7 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-12-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-1" specific-use="notebook-content">
+<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-2" specific-use="notebook-content">
 <code language="python"># Update metadata to reflect new dimensions and transform
 out_meta.update({
     &quot;driver&quot;: &quot;GTiff&quot;,
@@ -309,7 +627,7 @@ out_meta.update({
     &quot;transform&quot;: out_transform
 })</code>
 </sec>
-<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-1" specific-use="notebook-content">
+<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-2" specific-use="notebook-content">
 <code language="python"># Save the clipped DEM
 output_path = &quot;Data/Rasters/clipped_dem.tif&quot;
 with rasterio.open(output_path, 'w', **out_meta) as dest:
@@ -320,7 +638,7 @@ print(f&quot;Clipped DEM saved to {output_path}&quot;)</code>
   <preformat>Clipped DEM saved to Data/Rasters/clipped_dem.tif</preformat>
 </boxed-text>
 </sec>
-<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-1" specific-use="notebook-content">
+<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-2" specific-use="notebook-content">
 <code language="python">DEM10m = out_image
 
 # Optionally, plot the clipped DEM
@@ -336,7 +654,7 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-15-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-1" specific-use="notebook-content">
+<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-2" specific-use="notebook-content">
 <code language="python"># Load Faults
 
 faults_URL = 'Data/Vectors/Faults.shp'
@@ -355,7 +673,7 @@ print(&quot;Shapefile bounds:&quot;, contacts.total_bounds)</code>
 Shapefile bounds: [-111.62501107   35.12500543 -111.56251097   35.18750938]</preformat>
 </boxed-text>
 </sec>
-<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-1" specific-use="notebook-content">
+<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-2" specific-use="notebook-content">
 <code language="python"># Plot the clipped DEM, study area, and faults
 fig, ax = plt.subplots(figsize=(10, 10))
 
@@ -380,10 +698,10 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-17-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-1" specific-use="notebook-content">
+<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-2" specific-use="notebook-content">
 <code language="python"># create multiple hillshades </code>
 </sec>
-<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-1" specific-use="notebook-content">
+<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-2" specific-use="notebook-content">
 <code language="python"># Function to apply Gaussian smoothing and Canny edge detection
 def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
     # Step 1: Replace masked values (nodata) with the median of the valid data
@@ -401,7 +719,7 @@ def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
     # Return both smoothed DEM and detected edges for visualization
     return smoothed_dem, edges</code>
 </sec>
-<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-1" specific-use="notebook-content">
+<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-2" specific-use="notebook-content">
 <code language="python"># Example parameters for the Canny filter
 sigma = 1.0
 gthr_low = 3
@@ -414,7 +732,7 @@ mask = dem_data.mask  # Extract the mask from the masked array
 # Apply the Canny filter
 smoothed_dem, edges = apply_canny_filter(dem_data, mask, sigma=sigma, gthr_low=gthr_low, gthr_high=gthr_high)</code>
 </sec>
-<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-1" specific-use="notebook-content">
+<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-2" specific-use="notebook-content">
 <code language="python"># Plot the results
 fig, ax = plt.subplots(1, 2, figsize=(12, 6))
 
@@ -441,7 +759,270 @@ plt.show()</code>
 
 
 </sub-article>
-<sub-article article-type="notebook" id="nb-6-nb-2">
+<sub-article article-type="notebook" id="nb-9-nb-3">
+<front-stub>
+<title-group>
+<article-title>02 Canny Edge Detection</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-3" specific-use="notebook-content">
+<sec id="install-packages-nb-3">
+  <title>Install Packages</title>
+  </sec>
+  <sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-3" specific-use="notebook-content">
+  <code language="python">#!pip install numpy opencv-python rasterio matplotlib
+#!pip install requests</code>
+  </sec>
+  <sec id="cell-9074a01c-b262-4458-87a4-c9116668aa4f-nb-3" specific-use="notebook-content">
+</sec>
+<sec id="load-libraries-nb-3">
+  <title>Load Libraries</title>
+  </sec>
+  <sec id="cell-7944e4f8-b0e5-44fd-ba14-70e8582d3c7d-nb-3" specific-use="notebook-content">
+  <code language="python">import numpy as np
+import cv2
+import rasterio
+import matplotlib.pyplot as plt
+import requests
+import os
+import math
+import itertools</code>
+  </sec>
+  <sec id="a6130b4e-af23-4d3d-87ee-8623445abfbf-nb-3" specific-use="notebook-content">
+  <code language="python"># URL of the DEM
+DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n35w112/USGS_1_n35w112_20240402.tif'
+dem_path = 'Data/USGS_1_n35w112_20240402.tif'  # Local filename</code>
+  </sec>
+  <sec id="cell-515ea8c6-f32c-41e0-a04a-5257ffc483fe-nb-3" specific-use="notebook-content">
+  <code language="python"># Download the DEM if it doesn't exist locally
+if not os.path.exists(dem_path):
+    print(&quot;Downloading DEM...&quot;)
+    response = requests.get(DEM_URL, stream=True)
+    with open(dem_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=8192):
+            file.write(chunk)
+    print(&quot;Download complete.&quot;)</code>
+  </sec>
+  <sec id="e6954605-813e-46c1-a18f-4c1cb068e075-nb-3" specific-use="notebook-content">
+  <code language="python"># Load DEM using rasterio
+with rasterio.open(dem_path) as src:
+    dem = src.read(1)  # Read the first band (assuming a single-band DEM)
+    profile = src.profile  # Save profile to ensure consistent georeferencing
+    transform = src.transform
+
+# Step 1: Original DEM
+plt.figure(figsize=(12, 8))
+plt.title(&quot;Original DEM&quot;)
+plt.imshow(dem, cmap='terrain')
+plt.colorbar(label='Elevation (m)')
+plt.show()</code>
+  <boxed-text>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-6-output-1.png" />
+  </boxed-text>
+  </sec>
+  <sec id="b6c5d5b2-56fb-4d43-bf4c-2fcc39c7f734-nb-3" specific-use="notebook-content">
+  <code language="python"># Normalize the DEM for better edge detection
+dem_normalized = cv2.normalize(dem, None, 0, 255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+
+# Step 2: Normalized DEM
+plt.figure(figsize=(12, 8))
+plt.title(&quot;Normalized DEM&quot;)
+plt.imshow(dem_normalized, cmap='gray')
+plt.colorbar(label='Normalized Elevation')
+plt.show()</code>
+  <boxed-text>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-7-output-1.png" />
+  </boxed-text>
+  </sec>
+  <sec id="cell-241a834b-802e-48cf-882c-c2c23414939a-nb-3" specific-use="notebook-content">
+  <code language="python"># Define parameter ranges for Canny edge detection
+threshold1_values = [10, 20, 30]  # Lower thresholds for gradient intensity
+threshold2_values = [50, 100, 150]  # Upper thresholds for gradient intensity
+aperture_sizes = [3, 5, 7]  # Kernel sizes for Sobel operator
+
+# Prepare parameter combinations
+parameter_combinations = list(itertools.product(threshold1_values, threshold2_values, aperture_sizes))
+
+# Function to apply Canny edge detection and overlay edges on DEM
+def apply_canny_overlay(image, dem_normalized, threshold1, threshold2, aperture_size):
+    edges = cv2.Canny(image, threshold1, threshold2, apertureSize=aperture_size)
+    
+    # Create a color version of the DEM
+    dem_colored = cv2.cvtColor(dem_normalized, cv2.COLOR_GRAY2BGR)
+    
+    # Overlay edges in red
+    dem_colored[edges &gt; 0] = [255, 0, 0]  # Red color for edges
+    return dem_colored
+
+# Dynamically determine subplot grid size
+num_combinations = len(parameter_combinations)
+cols = 4  # Number of columns in subplot grid
+rows = (num_combinations // cols) + (num_combinations % cols &gt; 0)
+
+plt.figure(figsize=(15, 5 * rows))  # Adjust figure size based on rows
+
+# Apply Canny for each combination and plot results
+for i, (threshold1, threshold2, aperture_size) in enumerate(parameter_combinations):
+    result = apply_canny_overlay(dem_normalized, dem_normalized, threshold1, threshold2, aperture_size)
+    
+    plt.subplot(rows, cols, i + 1)
+    plt.title(f'T1: {threshold1}, T2: {threshold2}, A: {aperture_size}')
+    plt.imshow(result)
+    plt.axis('off')
+
+plt.tight_layout()
+plt.show()</code>
+  <boxed-text>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-8-output-1.png" />
+  </boxed-text>
+  </sec>
+  <sec id="cell-8025927c-f8b4-4df4-ac20-760897dac4e6-nb-3" specific-use="notebook-content">
+  <code language="python"># Good combinations: [30,150,5],[20,150,5][10,150,5]
+threshold1 =30
+threshold2 =150
+aperture_size =5 
+
+
+Canny_edges = apply_canny_overlay(dem_normalized, dem_normalized, threshold1, threshold2, aperture_size)
+Cedges = cv2.Canny(dem_normalized, threshold1, threshold2, apertureSize=aperture_size)
+plt.figure(figsize=(12, 8))
+plt.imshow(Canny_edges)
+plt.show()</code>
+  <boxed-text>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-9-output-1.png" />
+  </boxed-text>
+  </sec>
+  <sec id="a370f359-73d3-4d73-bd1d-d589d45081ec-nb-3" specific-use="notebook-content">
+  <code language="python"># Update the profile for the Canny edge output
+profile.update(
+    dtype=rasterio.uint8,  # Edge images are typically binary or 8-bit
+    count=1,  # Single-band output
+    compress='lzw',  # Optional compression
+    nodata=None  # Remove or set a valid nodata value for uint8
+)
+
+# Ensure CRS and transform are carried over
+print(f&quot;CRS of input DEM: {profile['crs']}&quot;)
+print(f&quot;Transform of input DEM: {profile['transform']}&quot;)
+
+# Save the Canny edges as GeoTIFF with the same CRS and transform
+canny_output_path = 'Data/Canny_edges_geotiff_new.tif'
+with rasterio.open(canny_output_path, 'w', **profile) as dst:
+    dst.write(Cedges, 1)  # Write Canny edges as the first band
+print(f&quot;Canny edge GeoTIFF saved to {canny_output_path}&quot;)</code>
+  <boxed-text>
+    <preformat>CRS of input DEM: EPSG:4269
+Transform of input DEM: | 0.00, 0.00,-112.00|
+| 0.00,-0.00, 35.00|
+| 0.00, 0.00, 1.00|
+Canny edge GeoTIFF saved to Data/Canny_edges_geotiff_new.tif</preformat>
+  </boxed-text>
+  </sec>
+  <sec id="cell-55c95b0f-7a63-4160-8b91-ccfccb4e29a2-nb-3" specific-use="notebook-content">
+  <code language="python"># Save the Canny edges as a PNG
+canny_output_path = 'Data/Canny_edges_new.png'  # Path for the PNG export
+cv2.imwrite(canny_output_path, Cedges)  # Corrected: first argument is the path, second is the image
+print(f&quot;Image saved to {canny_output_path}&quot;)</code>
+  <boxed-text>
+    <preformat>Image saved to Data/Canny_edges_new.png</preformat>
+  </boxed-text>
+  </sec>
+  <sec id="cell-154ec17d-eb00-4cd1-a98b-1c430ebd33bd-nb-3" specific-use="notebook-content">
+  <code language="python"># Parameter ranges to optimize
+rho_values = [1, 2, 3]  # Distance resolution in pixels
+threshold_values = [50, 100, 150]  # Minimum votes for a line
+min_line_length_values = [20, 50, 100]  # Minimum line segment length
+max_line_gap_values = [5, 10, 20]  # Maximum gap between line segments
+
+# Prepare for grid search
+parameter_combinations = list(itertools.product(rho_values, threshold_values, min_line_length_values, max_line_gap_values))
+
+# Function to apply Probabilistic Hough Transform and visualize results
+def apply_hough_transform(Cedges, rho, theta, threshold, min_line_length, max_line_gap):
+    cedgesP = cv2.cvtColor(Cedges, cv2.COLOR_GRAY2BGR)  # Convert to BGR for colored output
+    linesP = cv2.HoughLinesP(Cedges, rho, theta, threshold, None, min_line_length, max_line_gap)
+
+    if linesP is not None:
+        for i in range(0, len(linesP)):
+            l = linesP[i][0]
+            cv2.line(cedgesP, (l[0], l[1]), (l[2], l[3]), (0, 0, 255), 2, cv2.LINE_AA)  # Red color (BGR: (0, 0, 255))
+    return cedgesP
+
+# Dynamically determine subplot grid size
+num_combinations = len(parameter_combinations)
+cols = 4  # Number of columns in subplot grid
+rows = (num_combinations // cols) + (num_combinations % cols &gt; 0)
+
+plt.figure(figsize=(15, 5 * rows))  # Adjust figure size based on rows
+
+# Plot all combinations
+for i, (rho, threshold, min_line_length, max_line_gap) in enumerate(parameter_combinations):
+    result = apply_hough_transform(Cedges, rho, np.pi/180, threshold, min_line_length, max_line_gap)
+    
+    plt.subplot(rows, cols, i + 1)
+    plt.title(f'Rho: {rho}, Thresh: {threshold}\nMinLen: {min_line_length}, MaxGap: {max_line_gap}')
+    plt.imshow(result)
+    plt.axis('off')
+
+plt.tight_layout()
+plt.show()</code>
+  </sec>
+  <sec id="cell-7726f88d-a636-4bab-bea4-aa271c5a564f-nb-3" specific-use="notebook-content">
+  <code language="python">#Probabilistic Hough Transform with chosen parameters
+rho = 3  # Distance resolution in pixels
+theta = np.pi / 180  # Angular resolution in radians
+threshold = 100  # Minimum number of votes
+min_line_length = 20  # Minimum line length
+max_line_gap = 10  # Maximum gap between line segments
+
+
+result = apply_hough_transform(Cedges, rho, np.pi/180, threshold, min_line_length, max_line_gap)
+plt.figure(figsize=(10, 10))
+plt.title(f'Rho: {rho}, Thresh: {threshold}\nMinLen: {min_line_length}, MaxGap: {max_line_gap}')
+plt.imshow(result)
+plt.axis('off')
+plt.tight_layout()
+plt.show()
+  </code>
+  </sec>
+  <sec id="cell-4e8ef726-86e6-4298-ac0e-e234185a4940-nb-3" specific-use="notebook-content">
+  <code language="python"># Save the output image
+output_path = 'Data\detected_lineaments.png'  # Use .tif for GeoTIFF export
+cv2.imwrite(output_path, line_image)
+print(f&quot;Image saved to {output_path}&quot;)
+
+# Optional: Export as GeoTIFF with georeferencing
+output_geotiff_path = 'Data\detected_lineaments_geotiff.tif'
+with rasterio.open(output_geotiff_path, 'w', **profile) as dst:
+    # Save only the red channel (detected lines) for georeferencing
+    red_channel = line_image[:, :, 2]
+    dst.write(red_channel, 1)
+print(f&quot;GeoTIFF saved to {output_geotiff_path}&quot;)</code>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-12-nb-4">
 <front-stub>
 <title-group>
 <article-title>00 Project Overview</article-title>
@@ -460,8 +1041,8 @@ plt.show()</code>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-2" specific-use="notebook-content">
-<p>Text description</p>
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-4" specific-use="notebook-content">
+<p>Project description</p>
 </sec>
 </body>
 
