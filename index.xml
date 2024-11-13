@@ -61,10 +61,10 @@ enhancement</article-title>
 <corresp id="cor-1">Ryan.lima@nau.edu</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-12">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-13">
 <year>2024</year>
 <month>11</month>
-<day>12</day>
+<day>13</day>
 </pub-date>
 
 
@@ -109,7 +109,7 @@ enhancement</article-title>
 <back>
 </back>
 
-<sub-article article-type="notebook" id="nb-15-nb-article">
+<sub-article article-type="notebook" id="nb-18-nb-article">
 <front-stub>
 <title-group>
 <article-title>Mapping potential lineaments across the State of Arizona
@@ -504,7 +504,7 @@ enhancement</article-title>
 <sub-article article-type="notebook" id="nb-6-nb-2">
 <front-stub>
 <title-group>
-<article-title>01 Prepare Test Data</article-title>
+<article-title>04 Topographic Position Index</article-title>
 </title-group>
 <contrib-group>
 <contrib contrib-type="author">
@@ -520,235 +520,212 @@ enhancement</article-title>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-2" specific-use="notebook-content">
-<p>Text description</p>
-</sec>
-<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-2" specific-use="notebook-content">
-<code language="python">## Install libraries if not installed
-#!pip install geopandas </code>
-</sec>
-<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-2" specific-use="notebook-content">
-<code language="python">import os
+<sec id="f286c5e4-bc8d-47f5-9465-39298da46db4-nb-2" specific-use="notebook-content">
+<sec id="overview-of-topographic-position-index-or-tpi-nb-2">
+  <title>Overview of Topographic Position Index or TPI</title>
+  <list list-type="bullet">
+    <list-item>
+      <p>Used to identify hills and valleys in a DEM</p>
+    </list-item>
+    <list-item>
+      <p>Compared elevation at a cell with average elevation in a
+      circular neighborhood around that cell</p>
+    </list-item>
+    <list-item>
+      <p>Positive TPI values mean the cell is higher than neighbors</p>
+      <list list-type="bullet">
+        <list-item>
+          <p>Such as Hills or Ridgelines</p>
+        </list-item>
+      </list>
+    </list-item>
+    <list-item>
+      <p>Negative TPI values mean the cell is lower than neighbors</p>
+      <list list-type="bullet">
+        <list-item>
+          <p>Such as valleys, sinks, or drainages</p>
+        </list-item>
+      </list>
+    </list-item>
+  </list>
+  <disp-quote>
+    <p>For more info see:</p>
+  </disp-quote>
+  <list list-type="bullet">
+    <list-item>
+      <p>Raster Lab 5: Calculating TPI, or Topographic Position Index,
+      in ArcGIS Pro
+      <ext-link ext-link-type="uri" xlink:href="https://www.youtube.com/watch?v=v7TQ4n5HPPg">Youtube
+      video</ext-link></p>
+    </list-item>
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://www.jenessent.com/arcview/TPI_Weiss_poster.htm">TPI
+      Poster 1</ext-link></p>
+    </list-item>
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://www.jenessent.com/arcview/TPI_jen_poster.htm">TPI
+      Poster 2</ext-link></p>
+    </list-item>
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://www.jenessent.com/downloads/TPI_Documentation_online.pdf">TPI
+      Documentation</ext-link></p>
+    </list-item>
+  </list>
+  </sec>
+  <sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-2" specific-use="notebook-content">
+  <sec id="install-packages-nb-2">
+    <title>Install Packages</title>
+    </sec>
+    <sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-2" specific-use="notebook-content">
+    <code language="python"># !pip install numpy opencv-python rasterio matplotlib requests tqdm skimage
+    </code>
+    </sec>
+    <sec id="cell-9074a01c-b262-4458-87a4-c9116668aa4f-nb-2" specific-use="notebook-content">
+  </sec>
+  <sec id="load-libraries-nb-2">
+    <title>Load Libraries</title>
+    </sec>
+    <sec id="cell-7944e4f8-b0e5-44fd-ba14-70e8582d3c7d-nb-2" specific-use="notebook-content">
+    <code language="python">import os
 import numpy as np
-import matplotlib.pyplot as plt
+import cv2
 import rasterio
-import geopandas as gpd
-from rasterio.plot import show
-from rasterio.mask import mask
-from matplotlib import colors
-from skimage import feature, measure, morphology
-from skimage.draw import line
-from scipy.ndimage import gaussian_filter
-from scipy.spatial.distance import euclidean
-from math import atan2, degrees
-from skimage.measure import approximate_polygon, find_contours
-</code>
-</sec>
-<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-2" specific-use="notebook-content">
-<code language="python">DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif'
-study_area_shapefile_path = 'Data/Vectors/LakeMaryStudyArea_Bound.shp'
-</code>
-</sec>
-<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-2" specific-use="notebook-content">
-<code language="python"># Load the DEM
-with rasterio.open(DEM_URL) as src:
-    DEM = src.read(1)  # Load the DEM as a NumPy array
-    transform = src.transform
-    crs = src.crs
-    dem_bounds = src.bounds
-    nodata = src.nodata  # Capture the nodata value
-    print(&quot;DEM bounds:&quot;, dem_bounds)
-    print(&quot;DEM nodata value:&quot;, nodata)</code>
-<boxed-text>
-  <preformat>DEM bounds: BoundingBox(left=-112.00055555619338, bottom=34.9994444441067, right=-110.99944444400529, top=36.000555556294785)
-DEM nodata value: -999999.0</preformat>
-</boxed-text>
-</sec>
-<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-2" specific-use="notebook-content">
-<code language="python">study_area = gpd.read_file(study_area_shapefile_path)
-</code>
-</sec>
-<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-2" specific-use="notebook-content">
-<code language="python"># Reproject the shapefile to match DEM CRS
-study_area = study_area.to_crs(crs)
-print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
-<boxed-text>
-  <preformat>Shapefile bounds: [-111.62501107   35.12500537 -111.56251105   35.18750538]</preformat>
-</boxed-text>
-</sec>
-<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-2" specific-use="notebook-content">
-<code language="python"># Clip the DEM to the shapefile geometry
-geoms = study_area.geometry.values  # Get the geometries from the GeoDataFrame
-geoms = [geom.__geo_interface__ for geom in geoms]  # Convert to GeoJSON format</code>
-</sec>
-<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-2" specific-use="notebook-content">
-<code language="python">with rasterio.open(DEM_URL) as src:
-    out_image, out_transform = mask(src, geoms, crop=True)
-    out_meta = src.meta</code>
-</sec>
-<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-2" specific-use="notebook-content">
-<code language="python"># Mask the nodata values
-out_image = np.ma.masked_equal(out_image, nodata)</code>
-</sec>
-<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-2" specific-use="notebook-content">
-<code language="python"># Check DEM range
-print(&quot;DEM min:&quot;, np.min(out_image))
-print(&quot;DEM max:&quot;, np.max(out_image))</code>
-<boxed-text>
-  <preformat>DEM min: 1998.0142
-DEM max: 2179.7163</preformat>
-</boxed-text>
-</sec>
-<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-2" specific-use="notebook-content">
-<code language="python"># Normalize the DEM values for better visualization
-norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+import matplotlib.pyplot as plt
+from scipy.ndimage import convolve, generic_filter
+from skimage import exposure
+from tqdm import tqdm
+from pyproj import CRS
+import requests
+    </code>
+    </sec>
+    <sec id="cell-6a91cbe2-c813-42d1-8f0b-aab432a0b880-nb-2" specific-use="notebook-content">
+    <code language="python"># URL of the DEM
+DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n35w112/USGS_1_n35w112_20240402.tif'
+dem_path = 'Data/USGS_1_n35w112_20240402.tif'
 
-# Plot the clipped DEM
-fig, ax = plt.subplots(figsize=(10, 10))
-show(out_image, transform=out_transform, cmap='viridis', ax=ax, norm=norm)
+# Download DEM if not present
+if not os.path.exists(dem_path):
+    print(&quot;Downloading DEM...&quot;)
+    response = requests.get(DEM_URL, stream=True)
+    with open(dem_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=8192):
+            file.write(chunk)
+    print(&quot;Download complete.&quot;)
 
-# Overlay the shapefile
-study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+# Load DEM
+with rasterio.open(dem_path) as src:
+    dem = src.read(1)
+    profile = src.profile
+    </code>
+    </sec>
+    <sec id="cell-18e9fc5a-8925-4370-9c1a-6cc38b573b28-nb-2" specific-use="notebook-content">
+    <code language="python">def query_raster_info(raster):
+    &quot;&quot;&quot;Queries raster metadata and prints details.&quot;&quot;&quot;
+    if isinstance(raster, str):  # Path to raster
+        with rasterio.open(raster) as src:
+            profile = src.profile
+            transform = src.transform
+            crs = src.crs
+    elif isinstance(raster, rasterio.io.DatasetReader):
+        profile = raster.profile
+        transform = raster.transform
+        crs = raster.crs
+    elif isinstance(raster, np.ndarray):
+        print(f&quot;Data Type: {raster.dtype}, Shape: {raster.shape}&quot;)
+        return
+    else:
+        raise ValueError(&quot;Input must be a path, rasterio object, or NumPy array.&quot;)
 
-plt.title('Clipped DEM with Study Area')
-plt.xlabel('Longitude')
-plt.ylabel('Latitude')
-plt.show()</code>
-<boxed-text>
-  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-12-output-1.png" />
-</boxed-text>
-</sec>
-<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-2" specific-use="notebook-content">
-<code language="python"># Update metadata to reflect new dimensions and transform
-out_meta.update({
-    &quot;driver&quot;: &quot;GTiff&quot;,
-    &quot;height&quot;: out_image.shape[1],
-    &quot;width&quot;: out_image.shape[2],
-    &quot;transform&quot;: out_transform
-})</code>
-</sec>
-<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-2" specific-use="notebook-content">
-<code language="python"># Save the clipped DEM
-output_path = &quot;Data/Rasters/clipped_dem.tif&quot;
-with rasterio.open(output_path, 'w', **out_meta) as dest:
-    # Write the first band (use out_image[0] since it has shape (1, height, width))
-    dest.write(out_image[0].filled(nodata), 1)  # Fill the masked values with nodata
-print(f&quot;Clipped DEM saved to {output_path}&quot;)</code>
-<boxed-text>
-  <preformat>Clipped DEM saved to Data/Rasters/clipped_dem.tif</preformat>
-</boxed-text>
-</sec>
-<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-2" specific-use="notebook-content">
-<code language="python">DEM10m = out_image
+    units = CRS.from_wkt(crs.to_wkt()).axis_info[0].unit_name if crs else 'Unknown'
+    print(f&quot;Driver: {profile['driver']}, Data Type: {profile['dtype']}&quot;)
+    print(f&quot;Resolution: {transform[0]} x {abs(transform[4])} {units}&quot;)
+    print(f&quot;Projection: {profile['crs']}&quot;)
+    </code>
+    </sec>
+    <sec id="b9552c9f-c31e-4038-a483-ac9fb0a7ff46-nb-2" specific-use="notebook-content">
+    <code language="python">def create_neighborhood(shape='circle', size=5):
+    &quot;&quot;&quot;Create a square or circular neighborhood.&quot;&quot;&quot;
+    if shape == 'square':
+        return np.ones((size, size))
+    elif shape == 'circle':
+        y, x = np.ogrid[-size//2:size//2+1, -size//2:size//2+1]
+        return (x**2 + y**2) &lt;= (size//2)**2
+    else:
+        raise ValueError(&quot;Invalid shape. Choose 'square' or 'circle'.&quot;)
 
-# Optionally, plot the clipped DEM
-fig, ax = plt.subplots(figsize=(10, 10))
-norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
-show(DEM10m, transform=out_transform, cmap='viridis', ax=ax, norm=norm)
-study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
-plt.title('Clipped DEM with Study Area')
-plt.xlabel('Longitude')
-plt.ylabel('Latitude')
-plt.show()</code>
-<boxed-text>
-  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-15-output-1.png" />
-</boxed-text>
-</sec>
-<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-2" specific-use="notebook-content">
-<code language="python"># Load Faults
-
-faults_URL = 'Data/Vectors/Faults.shp'
-faults = gpd.read_file(faults_URL)
-faults = faults.to_crs(crs)
-print(&quot;Shapefile bounds:&quot;, faults.total_bounds)
-
-# Load Contacts
-
-contacts_URL = 'Data/Vectors/Contacts.shp'
-contacts = gpd.read_file(contacts_URL)
-contacts = contacts.to_crs(crs)
-print(&quot;Shapefile bounds:&quot;, contacts.total_bounds)</code>
-<boxed-text>
-  <preformat>Shapefile bounds: [-111.62501105   35.12500939 -111.59149268   35.18750927]
-Shapefile bounds: [-111.62501107   35.12500543 -111.56251097   35.18750938]</preformat>
-</boxed-text>
-</sec>
-<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-2" specific-use="notebook-content">
-<code language="python"># Plot the clipped DEM, study area, and faults
-fig, ax = plt.subplots(figsize=(10, 10))
-
-# Normalize the DEM values for better visualization
-norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
-
-# Plot the DEM
-show(out_image, transform=out_transform, cmap='terrain', ax=ax, norm=norm)
-
-# Plot the study area boundary
-study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
-
-# Plot the faults
-faults.plot(ax=ax, edgecolor='blue', linewidth=1, linestyle='--')
-contacts.plot(ax=ax, edgecolor = 'red', linewidth = 0.75, linestyle='-.')
-
-plt.title('Clipped DEM with Study Area and Faults')
-plt.xlabel('Longitude')
-plt.ylabel('Latitude')
-plt.show()</code>
-<boxed-text>
-  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-17-output-1.png" />
-</boxed-text>
-</sec>
-<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-2" specific-use="notebook-content">
-<code language="python"># create multiple hillshades </code>
-</sec>
-<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-2" specific-use="notebook-content">
-<code language="python"># Function to apply Gaussian smoothing and Canny edge detection
-def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
-    # Step 1: Replace masked values (nodata) with the median of the valid data
-    filled_dem_data = dem_data.filled(np.median(dem_data))  # Fill masked areas with the median
+def apply_filter(dem, footprint, filter_type='mean'):
+    &quot;&quot;&quot;Apply filter using convolution.&quot;&quot;&quot;
+    if filter_type == 'mean':
+        return convolve(dem, footprint / footprint.sum(), mode='constant', cval=np.nan)
+    elif filter_type in ['median', 'max', 'min']:
+        filter_funcs = {'median': np.nanmedian, 'max': np.nanmax, 'min': np.nanmin}
+        return generic_filter(dem, filter_funcs[filter_type], footprint=footprint, mode='constant', cval=np.nan)
+    else:
+        raise ValueError(&quot;Invalid filter type.&quot;)
+    </code>
+    </sec>
+    <sec id="b1f84ed1-1d73-4af7-b0a5-31e41e97ad8a-nb-2" specific-use="notebook-content">
+    <code language="python">def plot_raster(data, title='Raster', cmap='viridis', clip_percentiles=(1, 99), equalize_hist=True):
+    &quot;&quot;&quot;Plot raster data with optional histogram equalization.&quot;&quot;&quot;
+    vmin = np.nanpercentile(data, clip_percentiles[0])
+    vmax = np.nanpercentile(data, clip_percentiles[1])
+    data_clipped = np.clip(data, vmin, vmax)
+    data_no_nan = np.nan_to_num(data_clipped, nan=vmin)
     
-    # Step 2: Apply Gaussian smoothing
-    smoothed_dem = gaussian_filter(filled_dem_data, sigma=sigma)
+    if equalize_hist:
+        data_eq = exposure.equalize_hist(data_no_nan) * 255
+        plt.imshow(data_eq, cmap=cmap)
+    else:
+        plt.imshow(data_no_nan, cmap=cmap, vmin=vmin, vmax=vmax)
     
-    # Step 3: Reapply the mask after smoothing (keep the masked regions as nodata)
-    smoothed_dem = np.ma.masked_where(mask, smoothed_dem)  # Reapply the mask
-    
-    # Step 4: Apply Canny edge detection with adjusted thresholds (on the unmasked regions)
-    edges = feature.canny(smoothed_dem, low_threshold=gthr_low, high_threshold=gthr_high)
-    
-    # Return both smoothed DEM and detected edges for visualization
-    return smoothed_dem, edges</code>
-</sec>
-<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-2" specific-use="notebook-content">
-<code language="python"># Example parameters for the Canny filter
-sigma = 1.0
-gthr_low = 3
-gthr_high = 10
-
-# Ensure dem_data is 2D and get the mask for nodata values
-dem_data = out_image[0] if out_image.ndim &gt; 2 else out_image  # Adjust for possible 3D array
-mask = dem_data.mask  # Extract the mask from the masked array
-
-# Apply the Canny filter
-smoothed_dem, edges = apply_canny_filter(dem_data, mask, sigma=sigma, gthr_low=gthr_low, gthr_high=gthr_high)</code>
-</sec>
-<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-2" specific-use="notebook-content">
-<code language="python"># Plot the results
-fig, ax = plt.subplots(1, 2, figsize=(12, 6))
-
-# Plot smoothed DEM
-ax[0].imshow(smoothed_dem, cmap='terrain')
-ax[0].set_title('Smoothed DEM')
-
-# Plot edges
-ax[1].imshow(edges, cmap='gray')
-ax[1].set_title('Canny Edges')
-
-
-plt.show()</code>
-<boxed-text>
-  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-22-output-1.png" />
-</boxed-text>
+    plt.title(title)
+    plt.colorbar(label='Value')
+    plt.show()
+    </code>
+    </sec>
+    <sec id="cell-7103f021-4dad-49c8-b307-1ca377e57473-nb-2" specific-use="notebook-content">
+    <code language="python">def calculate_tpi(original_dem, filtered_dem, normalize=False):
+    &quot;&quot;&quot;Calculate TPI and optionally normalize to 0-255.&quot;&quot;&quot;
+    tpi = original_dem - filtered_dem
+    if normalize:
+        tpi_min, tpi_max = np.nanmin(tpi), np.nanmax(tpi)
+        return ((tpi - tpi_min) / (tpi_max - tpi_min) * 255).astype(np.uint8)
+    return tpi
+    </code>
+    </sec>
+    <sec id="d869b9f7-bdb2-46f3-9d7b-2cac2c180964-nb-2" specific-use="notebook-content">
+    <code language="python">def try_neighborhood_sizes(dem, sizes, shape='circle', normalize=False):
+    &quot;&quot;&quot;Apply multiple neighborhood sizes and plot TPI.&quot;&quot;&quot;
+    footprint1 = create_neighborhood(shape=shape, size=3) # smooth the DEM first with 3x3 mean smoothing
+    smoothed_dem = apply_filter(dem, footprint1, filter_type='mean')
+    for size in sizes:
+        footprint2 = create_neighborhood(shape=shape, size=size)
+        filtered_dem = apply_filter(dem, footprint2, filter_type='mean')
+        tpi = calculate_tpi(smoothed_dem, filtered_dem, normalize=normalize)
+        plot_raster(tpi, title=f'TPI with {shape}, size={size}', cmap='viridis')
+    </code>
+    </sec>
+    <sec id="f4ea5347-79bd-4e76-92b0-e7efc38abbef-nb-2" specific-use="notebook-content">
+    <code language="python">sizes = [5, 10, 20, 30, 40] # try different mean filter sizes for TPI
+try_neighborhood_sizes(dem, sizes)
+    </code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-1.png" />
+    </boxed-text>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-2.png" />
+    </boxed-text>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-3.png" />
+    </boxed-text>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-4.png" />
+    </boxed-text>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-5.png" />
+    </boxed-text>
+    </sec>
+  </sec>
 </sec>
 </body>
 
@@ -830,7 +807,7 @@ plt.imshow(dem, cmap='terrain')
 plt.colorbar(label='Elevation (m)')
 plt.show()</code>
   <boxed-text>
-    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-6-output-1.png" />
+    <graphic mimetype="image" mime-subtype="png" xlink:href="03_CannyEdges_files/figure-jats/cell-6-output-1.png" />
   </boxed-text>
   </sec>
   <sec id="b6c5d5b2-56fb-4d43-bf4c-2fcc39c7f734-nb-3" specific-use="notebook-content">
@@ -844,7 +821,7 @@ plt.imshow(dem_normalized, cmap='gray')
 plt.colorbar(label='Normalized Elevation')
 plt.show()</code>
   <boxed-text>
-    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-7-output-1.png" />
+    <graphic mimetype="image" mime-subtype="png" xlink:href="03_CannyEdges_files/figure-jats/cell-7-output-1.png" />
   </boxed-text>
   </sec>
   <sec id="cell-241a834b-802e-48cf-882c-c2c23414939a-nb-3" specific-use="notebook-content">
@@ -886,7 +863,7 @@ for i, (threshold1, threshold2, aperture_size) in enumerate(parameter_combinatio
 plt.tight_layout()
 plt.show()</code>
   <boxed-text>
-    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-8-output-1.png" />
+    <graphic mimetype="image" mime-subtype="png" xlink:href="03_CannyEdges_files/figure-jats/cell-8-output-1.png" />
   </boxed-text>
   </sec>
   <sec id="cell-8025927c-f8b4-4df4-ac20-760897dac4e6-nb-3" specific-use="notebook-content">
@@ -902,7 +879,7 @@ plt.figure(figsize=(12, 8))
 plt.imshow(Canny_edges)
 plt.show()</code>
   <boxed-text>
-    <graphic mimetype="image" mime-subtype="png" xlink:href="02_Canny-Edge-Detection_files/figure-jats/cell-9-output-1.png" />
+    <graphic mimetype="image" mime-subtype="png" xlink:href="03_CannyEdges_files/figure-jats/cell-9-output-1.png" />
   </boxed-text>
   </sec>
   <sec id="a370f359-73d3-4d73-bd1d-d589d45081ec-nb-3" specific-use="notebook-content">
@@ -1025,7 +1002,7 @@ print(f&quot;GeoTIFF saved to {output_geotiff_path}&quot;)</code>
 <sub-article article-type="notebook" id="nb-12-nb-4">
 <front-stub>
 <title-group>
-<article-title>00 Project Overview</article-title>
+<article-title>01 Prepare Test Data</article-title>
 </title-group>
 <contrib-group>
 <contrib contrib-type="author">
@@ -1042,7 +1019,274 @@ print(f&quot;GeoTIFF saved to {output_geotiff_path}&quot;)</code>
 
 <body>
 <sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-4" specific-use="notebook-content">
+<p>Text description</p>
+</sec>
+<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-4" specific-use="notebook-content">
+<code language="python">## Install libraries if not installed
+#!pip install geopandas </code>
+</sec>
+<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-4" specific-use="notebook-content">
+<code language="python">import os
+import numpy as np
+import matplotlib.pyplot as plt
+import rasterio
+import geopandas as gpd
+from rasterio.plot import show
+from rasterio.mask import mask
+from matplotlib import colors
+from skimage import feature, measure, morphology
+from skimage.draw import line
+from scipy.ndimage import gaussian_filter
+from scipy.spatial.distance import euclidean
+from math import atan2, degrees
+from skimage.measure import approximate_polygon, find_contours
+</code>
+</sec>
+<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-4" specific-use="notebook-content">
+<code language="python">DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif'
+study_area_shapefile_path = 'Data/Vectors/LakeMaryStudyArea_Bound.shp'
+</code>
+</sec>
+<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-4" specific-use="notebook-content">
+<code language="python"># Load the DEM
+with rasterio.open(DEM_URL) as src:
+    DEM = src.read(1)  # Load the DEM as a NumPy array
+    transform = src.transform
+    crs = src.crs
+    dem_bounds = src.bounds
+    nodata = src.nodata  # Capture the nodata value
+    print(&quot;DEM bounds:&quot;, dem_bounds)
+    print(&quot;DEM nodata value:&quot;, nodata)</code>
+<boxed-text>
+  <preformat>DEM bounds: BoundingBox(left=-112.00055555619338, bottom=34.9994444441067, right=-110.99944444400529, top=36.000555556294785)
+DEM nodata value: -999999.0</preformat>
+</boxed-text>
+</sec>
+<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-4" specific-use="notebook-content">
+<code language="python">study_area = gpd.read_file(study_area_shapefile_path)
+</code>
+</sec>
+<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-4" specific-use="notebook-content">
+<code language="python"># Reproject the shapefile to match DEM CRS
+study_area = study_area.to_crs(crs)
+print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
+<boxed-text>
+  <preformat>Shapefile bounds: [-111.62501107   35.12500537 -111.56251105   35.18750538]</preformat>
+</boxed-text>
+</sec>
+<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-4" specific-use="notebook-content">
+<code language="python"># Clip the DEM to the shapefile geometry
+geoms = study_area.geometry.values  # Get the geometries from the GeoDataFrame
+geoms = [geom.__geo_interface__ for geom in geoms]  # Convert to GeoJSON format</code>
+</sec>
+<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-4" specific-use="notebook-content">
+<code language="python">with rasterio.open(DEM_URL) as src:
+    out_image, out_transform = mask(src, geoms, crop=True)
+    out_meta = src.meta</code>
+</sec>
+<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-4" specific-use="notebook-content">
+<code language="python"># Mask the nodata values
+out_image = np.ma.masked_equal(out_image, nodata)</code>
+</sec>
+<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-4" specific-use="notebook-content">
+<code language="python"># Check DEM range
+print(&quot;DEM min:&quot;, np.min(out_image))
+print(&quot;DEM max:&quot;, np.max(out_image))</code>
+<boxed-text>
+  <preformat>DEM min: 1998.0142
+DEM max: 2179.7163</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-4" specific-use="notebook-content">
+<code language="python"># Normalize the DEM values for better visualization
+norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+
+# Plot the clipped DEM
+fig, ax = plt.subplots(figsize=(10, 10))
+show(out_image, transform=out_transform, cmap='viridis', ax=ax, norm=norm)
+
+# Overlay the shapefile
+study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+
+plt.title('Clipped DEM with Study Area')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-12-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-4" specific-use="notebook-content">
+<code language="python"># Update metadata to reflect new dimensions and transform
+out_meta.update({
+    &quot;driver&quot;: &quot;GTiff&quot;,
+    &quot;height&quot;: out_image.shape[1],
+    &quot;width&quot;: out_image.shape[2],
+    &quot;transform&quot;: out_transform
+})</code>
+</sec>
+<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-4" specific-use="notebook-content">
+<code language="python"># Save the clipped DEM
+output_path = &quot;Data/Rasters/clipped_dem.tif&quot;
+with rasterio.open(output_path, 'w', **out_meta) as dest:
+    # Write the first band (use out_image[0] since it has shape (1, height, width))
+    dest.write(out_image[0].filled(nodata), 1)  # Fill the masked values with nodata
+print(f&quot;Clipped DEM saved to {output_path}&quot;)</code>
+<boxed-text>
+  <preformat>Clipped DEM saved to Data/Rasters/clipped_dem.tif</preformat>
+</boxed-text>
+</sec>
+<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-4" specific-use="notebook-content">
+<code language="python">DEM10m = out_image
+
+# Optionally, plot the clipped DEM
+fig, ax = plt.subplots(figsize=(10, 10))
+norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+show(DEM10m, transform=out_transform, cmap='viridis', ax=ax, norm=norm)
+study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+plt.title('Clipped DEM with Study Area')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-15-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-4" specific-use="notebook-content">
+<code language="python"># Load Faults
+
+faults_URL = 'Data/Vectors/Faults.shp'
+faults = gpd.read_file(faults_URL)
+faults = faults.to_crs(crs)
+print(&quot;Shapefile bounds:&quot;, faults.total_bounds)
+
+# Load Contacts
+
+contacts_URL = 'Data/Vectors/Contacts.shp'
+contacts = gpd.read_file(contacts_URL)
+contacts = contacts.to_crs(crs)
+print(&quot;Shapefile bounds:&quot;, contacts.total_bounds)</code>
+<boxed-text>
+  <preformat>Shapefile bounds: [-111.62501105   35.12500939 -111.59149268   35.18750927]
+Shapefile bounds: [-111.62501107   35.12500543 -111.56251097   35.18750938]</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-4" specific-use="notebook-content">
+<code language="python"># Plot the clipped DEM, study area, and faults
+fig, ax = plt.subplots(figsize=(10, 10))
+
+# Normalize the DEM values for better visualization
+norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
+
+# Plot the DEM
+show(out_image, transform=out_transform, cmap='terrain', ax=ax, norm=norm)
+
+# Plot the study area boundary
+study_area.plot(ax=ax, facecolor='none', edgecolor='red', linewidth=2)
+
+# Plot the faults
+faults.plot(ax=ax, edgecolor='blue', linewidth=1, linestyle='--')
+contacts.plot(ax=ax, edgecolor = 'red', linewidth = 0.75, linestyle='-.')
+
+plt.title('Clipped DEM with Study Area and Faults')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-17-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-4" specific-use="notebook-content">
+<code language="python"># create multiple hillshades </code>
+</sec>
+<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-4" specific-use="notebook-content">
+<code language="python"># Function to apply Gaussian smoothing and Canny edge detection
+def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
+    # Step 1: Replace masked values (nodata) with the median of the valid data
+    filled_dem_data = dem_data.filled(np.median(dem_data))  # Fill masked areas with the median
+    
+    # Step 2: Apply Gaussian smoothing
+    smoothed_dem = gaussian_filter(filled_dem_data, sigma=sigma)
+    
+    # Step 3: Reapply the mask after smoothing (keep the masked regions as nodata)
+    smoothed_dem = np.ma.masked_where(mask, smoothed_dem)  # Reapply the mask
+    
+    # Step 4: Apply Canny edge detection with adjusted thresholds (on the unmasked regions)
+    edges = feature.canny(smoothed_dem, low_threshold=gthr_low, high_threshold=gthr_high)
+    
+    # Return both smoothed DEM and detected edges for visualization
+    return smoothed_dem, edges</code>
+</sec>
+<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-4" specific-use="notebook-content">
+<code language="python"># Example parameters for the Canny filter
+sigma = 1.0
+gthr_low = 3
+gthr_high = 10
+
+# Ensure dem_data is 2D and get the mask for nodata values
+dem_data = out_image[0] if out_image.ndim &gt; 2 else out_image  # Adjust for possible 3D array
+mask = dem_data.mask  # Extract the mask from the masked array
+
+# Apply the Canny filter
+smoothed_dem, edges = apply_canny_filter(dem_data, mask, sigma=sigma, gthr_low=gthr_low, gthr_high=gthr_high)</code>
+</sec>
+<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-4" specific-use="notebook-content">
+<code language="python"># Plot the results
+fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+
+# Plot smoothed DEM
+ax[0].imshow(smoothed_dem, cmap='terrain')
+ax[0].set_title('Smoothed DEM')
+
+# Plot edges
+ax[1].imshow(edges, cmap='gray')
+ax[1].set_title('Canny Edges')
+
+
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-22-output-1.png" />
+</boxed-text>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-15-nb-5">
+<front-stub>
+<title-group>
+<article-title>00 Project Overview</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-5" specific-use="notebook-content">
 <p>Project description</p>
+</sec>
+<sec id="cell-4f8e5259-5be3-46e9-abfa-b73c11a53ec2-nb-5" specific-use="notebook-content">
+<p>Resources</p>
+<list list-type="bullet">
+  <list-item>
+    <p>Manual Lineament Extraction in Arcmap
+    <ext-link ext-link-type="uri" xlink:href="https://www.youtube.com/watch?v=xcEBR8B9Bz4">youtube</ext-link></p>
+  </list-item>
+</list>
 </sec>
 </body>
 
