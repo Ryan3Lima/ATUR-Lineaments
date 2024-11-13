@@ -109,7 +109,7 @@ enhancement</article-title>
 <back>
 </back>
 
-<sub-article article-type="notebook" id="nb-18-nb-article">
+<sub-article article-type="notebook" id="nb-21-nb-article">
 <front-stub>
 <title-group>
 <article-title>Mapping potential lineaments across the State of Arizona
@@ -990,6 +990,84 @@ print(f&quot;GeoTIFF saved to {output_geotiff_path}&quot;)</code>
 <sub-article article-type="notebook" id="nb-12-nb-4">
 <front-stub>
 <title-group>
+<article-title>05 Line Linking</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<sec id="b1f84ed1-1d73-4af7-b0a5-31e41e97ad8a-nb-4" specific-use="notebook-content">
+<code language="python">import matplotlib.pyplot as plt
+from shapely.geometry import LineString
+import geopandas as gpd
+from shapely.ops import linemerge
+import random
+import numpy as np
+</code>
+</sec>
+<sec id="cf1585a2-801d-4d9c-aeec-081c34e4a11f-nb-4" specific-use="notebook-content">
+<code language="python"># Generate more lines with varying orientations and some intentional gaps
+def generate_random_lines(num_lines, x_start=0, y_start=0, max_length=5, spacing=5):
+    lines = []
+    for i in range(num_lines):
+        # Random starting point offset
+        x0 = x_start + i * spacing + random.uniform(-1, 1)
+        y0 = y_start + random.uniform(-1, 1)
+        
+        # Random orientation and length for the line
+        angle = random.uniform(0, 2 * np.pi)
+        length = random.uniform(1, max_length)
+        x1 = x0 + length * np.cos(angle)
+        y1 = y0 + length * np.sin(angle)
+        
+        lines.append(LineString([(x0, y0), (x1, y1)]))
+    return lines
+
+# Generate new lines with intentional gaps and varying orientations
+new_lines = generate_random_lines(15, spacing=10)
+
+# Combine with the previous lines
+all_lines = gpd.GeoDataFrame(geometry=new_lines)
+
+# Visualize the new set of lines with wider spacing and varied orientation
+fig, ax = plt.subplots(figsize=(12, 8))
+all_lines.plot(ax=ax, color='blue', linewidth=2, label=&quot;Sample Lines&quot;)
+
+# Label each line
+for idx, line in enumerate(all_lines.geometry):
+    x, y = line.coords[0]  # Get the start of each line for labeling
+    ax.text(x, y, f'Line {idx+1}', fontsize=10, color='darkred')
+
+plt.title(&quot;Sample Lines with Increased Spacing and Random Orientation&quot;, fontsize=14)
+plt.legend()
+plt.grid(True)
+plt.show()</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="05_Line-Linking_files/figure-jats/cell-3-output-1.png" />
+</boxed-text>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-15-nb-5">
+<front-stub>
+<title-group>
 <article-title>01 Prepare Test Data</article-title>
 </title-group>
 <contrib-group>
@@ -1006,14 +1084,14 @@ print(f&quot;GeoTIFF saved to {output_geotiff_path}&quot;)</code>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-4" specific-use="notebook-content">
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-5" specific-use="notebook-content">
 <p>Text description</p>
 </sec>
-<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-4" specific-use="notebook-content">
+<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-5" specific-use="notebook-content">
 <code language="python">## Install libraries if not installed
 #!pip install geopandas </code>
 </sec>
-<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-4" specific-use="notebook-content">
+<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-5" specific-use="notebook-content">
 <code language="python">import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1030,12 +1108,12 @@ from math import atan2, degrees
 from skimage.measure import approximate_polygon, find_contours
 </code>
 </sec>
-<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-4" specific-use="notebook-content">
+<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-5" specific-use="notebook-content">
 <code language="python">DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif'
 study_area_shapefile_path = 'Data/Vectors/LakeMaryStudyArea_Bound.shp'
 </code>
 </sec>
-<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-4" specific-use="notebook-content">
+<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-5" specific-use="notebook-content">
 <code language="python"># Load the DEM
 with rasterio.open(DEM_URL) as src:
     DEM = src.read(1)  # Load the DEM as a NumPy array
@@ -1050,11 +1128,11 @@ with rasterio.open(DEM_URL) as src:
 DEM nodata value: -999999.0</preformat>
 </boxed-text>
 </sec>
-<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-4" specific-use="notebook-content">
+<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-5" specific-use="notebook-content">
 <code language="python">study_area = gpd.read_file(study_area_shapefile_path)
 </code>
 </sec>
-<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-4" specific-use="notebook-content">
+<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-5" specific-use="notebook-content">
 <code language="python"># Reproject the shapefile to match DEM CRS
 study_area = study_area.to_crs(crs)
 print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
@@ -1062,21 +1140,21 @@ print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
   <preformat>Shapefile bounds: [-111.62501107   35.12500537 -111.56251105   35.18750538]</preformat>
 </boxed-text>
 </sec>
-<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-4" specific-use="notebook-content">
+<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-5" specific-use="notebook-content">
 <code language="python"># Clip the DEM to the shapefile geometry
 geoms = study_area.geometry.values  # Get the geometries from the GeoDataFrame
 geoms = [geom.__geo_interface__ for geom in geoms]  # Convert to GeoJSON format</code>
 </sec>
-<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-4" specific-use="notebook-content">
+<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-5" specific-use="notebook-content">
 <code language="python">with rasterio.open(DEM_URL) as src:
     out_image, out_transform = mask(src, geoms, crop=True)
     out_meta = src.meta</code>
 </sec>
-<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-4" specific-use="notebook-content">
+<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-5" specific-use="notebook-content">
 <code language="python"># Mask the nodata values
 out_image = np.ma.masked_equal(out_image, nodata)</code>
 </sec>
-<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-4" specific-use="notebook-content">
+<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-5" specific-use="notebook-content">
 <code language="python"># Check DEM range
 print(&quot;DEM min:&quot;, np.min(out_image))
 print(&quot;DEM max:&quot;, np.max(out_image))</code>
@@ -1085,7 +1163,7 @@ print(&quot;DEM max:&quot;, np.max(out_image))</code>
 DEM max: 2179.7163</preformat>
 </boxed-text>
 </sec>
-<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-4" specific-use="notebook-content">
+<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-5" specific-use="notebook-content">
 <code language="python"># Normalize the DEM values for better visualization
 norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
 
@@ -1104,7 +1182,7 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-12-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-4" specific-use="notebook-content">
+<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-5" specific-use="notebook-content">
 <code language="python"># Update metadata to reflect new dimensions and transform
 out_meta.update({
     &quot;driver&quot;: &quot;GTiff&quot;,
@@ -1113,7 +1191,7 @@ out_meta.update({
     &quot;transform&quot;: out_transform
 })</code>
 </sec>
-<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-4" specific-use="notebook-content">
+<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-5" specific-use="notebook-content">
 <code language="python"># Save the clipped DEM
 output_path = &quot;Data/Rasters/clipped_dem.tif&quot;
 with rasterio.open(output_path, 'w', **out_meta) as dest:
@@ -1124,7 +1202,7 @@ print(f&quot;Clipped DEM saved to {output_path}&quot;)</code>
   <preformat>Clipped DEM saved to Data/Rasters/clipped_dem.tif</preformat>
 </boxed-text>
 </sec>
-<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-4" specific-use="notebook-content">
+<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-5" specific-use="notebook-content">
 <code language="python">DEM10m = out_image
 
 # Optionally, plot the clipped DEM
@@ -1140,7 +1218,7 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-15-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-4" specific-use="notebook-content">
+<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-5" specific-use="notebook-content">
 <code language="python"># Load Faults
 
 faults_URL = 'Data/Vectors/Faults.shp'
@@ -1159,7 +1237,7 @@ print(&quot;Shapefile bounds:&quot;, contacts.total_bounds)</code>
 Shapefile bounds: [-111.62501107   35.12500543 -111.56251097   35.18750938]</preformat>
 </boxed-text>
 </sec>
-<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-4" specific-use="notebook-content">
+<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-5" specific-use="notebook-content">
 <code language="python"># Plot the clipped DEM, study area, and faults
 fig, ax = plt.subplots(figsize=(10, 10))
 
@@ -1184,10 +1262,10 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-17-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-4" specific-use="notebook-content">
+<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-5" specific-use="notebook-content">
 <code language="python"># create multiple hillshades </code>
 </sec>
-<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-4" specific-use="notebook-content">
+<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-5" specific-use="notebook-content">
 <code language="python"># Function to apply Gaussian smoothing and Canny edge detection
 def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
     # Step 1: Replace masked values (nodata) with the median of the valid data
@@ -1205,7 +1283,7 @@ def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
     # Return both smoothed DEM and detected edges for visualization
     return smoothed_dem, edges</code>
 </sec>
-<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-4" specific-use="notebook-content">
+<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-5" specific-use="notebook-content">
 <code language="python"># Example parameters for the Canny filter
 sigma = 1.0
 gthr_low = 3
@@ -1218,7 +1296,7 @@ mask = dem_data.mask  # Extract the mask from the masked array
 # Apply the Canny filter
 smoothed_dem, edges = apply_canny_filter(dem_data, mask, sigma=sigma, gthr_low=gthr_low, gthr_high=gthr_high)</code>
 </sec>
-<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-4" specific-use="notebook-content">
+<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-5" specific-use="notebook-content">
 <code language="python"># Plot the results
 fig, ax = plt.subplots(1, 2, figsize=(12, 6))
 
@@ -1245,7 +1323,7 @@ plt.show()</code>
 
 
 </sub-article>
-<sub-article article-type="notebook" id="nb-15-nb-5">
+<sub-article article-type="notebook" id="nb-18-nb-6">
 <front-stub>
 <title-group>
 <article-title>00 Project Overview</article-title>
@@ -1264,11 +1342,11 @@ plt.show()</code>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-5" specific-use="notebook-content">
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-6" specific-use="notebook-content">
 <p>Project description</p>
 </sec>
-<sec id="cell-4f8e5259-5be3-46e9-abfa-b73c11a53ec2-nb-5" specific-use="notebook-content">
-<sec id="resources-nb-5">
+<sec id="cell-4f8e5259-5be3-46e9-abfa-b73c11a53ec2-nb-6" specific-use="notebook-content">
+<sec id="resources-nb-6">
   <title>Resources</title>
   <list list-type="bullet">
     <list-item>
