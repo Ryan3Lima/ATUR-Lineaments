@@ -558,18 +558,6 @@ enhancement</article-title>
       <ext-link ext-link-type="uri" xlink:href="https://www.youtube.com/watch?v=v7TQ4n5HPPg">Youtube
       video</ext-link></p>
     </list-item>
-    <list-item>
-      <p><ext-link ext-link-type="uri" xlink:href="https://www.jenessent.com/arcview/TPI_Weiss_poster.htm">TPI
-      Poster 1</ext-link></p>
-    </list-item>
-    <list-item>
-      <p><ext-link ext-link-type="uri" xlink:href="https://www.jenessent.com/arcview/TPI_jen_poster.htm">TPI
-      Poster 2</ext-link></p>
-    </list-item>
-    <list-item>
-      <p><ext-link ext-link-type="uri" xlink:href="https://www.jenessent.com/downloads/TPI_Documentation_online.pdf">TPI
-      Documentation</ext-link></p>
-    </list-item>
   </list>
   </sec>
   <sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-2" specific-use="notebook-content">
@@ -1280,13 +1268,15 @@ plt.show()</code>
 <p>Project description</p>
 </sec>
 <sec id="cell-4f8e5259-5be3-46e9-abfa-b73c11a53ec2-nb-5" specific-use="notebook-content">
-<p>Resources</p>
-<list list-type="bullet">
-  <list-item>
-    <p>Manual Lineament Extraction in Arcmap
-    <ext-link ext-link-type="uri" xlink:href="https://www.youtube.com/watch?v=xcEBR8B9Bz4">youtube</ext-link></p>
-  </list-item>
-</list>
+<sec id="resources-nb-5">
+  <title>Resources</title>
+  <list list-type="bullet">
+    <list-item>
+      <p>Manual Lineament Extraction in Arcmap
+      <ext-link ext-link-type="uri" xlink:href="https://www.youtube.com/watch?v=xcEBR8B9Bz4">youtube</ext-link></p>
+    </list-item>
+  </list>
+  </sec>
 </sec>
 </body>
 
