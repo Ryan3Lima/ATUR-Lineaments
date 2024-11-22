@@ -252,130 +252,174 @@
 <h2 class="anchored" data-anchor-id="install-packages">Install Packages</h2>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="607644f4-99ab-4dd3-8644-5c9c7db8f0ed" class="cell" data-tags="[]">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install numpy opencv-python rasterio matplotlib requests tqdm skimage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="607644f4-99ab-4dd3-8644-5c9c7db8f0ed" class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install numpy opencv-python rasterio matplotlib requests tqdm scikit-image</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: numpy in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (2.0.2)
+Requirement already satisfied: opencv-python in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (4.10.0.84)
+Requirement already satisfied: rasterio in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (1.4.1)
+Requirement already satisfied: matplotlib in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (3.9.2)
+Requirement already satisfied: requests in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (2.32.3)
+Collecting tqdm
+  Using cached tqdm-4.67.0-py3-none-any.whl.metadata (57 kB)
+Requirement already satisfied: scikit-image in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (0.24.0)
+Requirement already satisfied: affine in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (2.4.0)
+Requirement already satisfied: attrs in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (24.2.0)
+Requirement already satisfied: certifi in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (2024.8.30)
+Requirement already satisfied: click&gt;=4.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (8.1.7)
+Requirement already satisfied: cligj&gt;=0.5 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (0.7.2)
+Requirement already satisfied: click-plugins in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (1.1.1)
+Requirement already satisfied: pyparsing in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (3.2.0)
+Requirement already satisfied: importlib-metadata in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (8.5.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (1.3.0)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (4.54.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (1.4.7)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (24.1)
+Requirement already satisfied: pillow&gt;=8 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (11.0.0)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (2.9.0)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (6.4.5)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from requests) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from requests) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from requests) (2.2.3)
+Requirement already satisfied: colorama in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from tqdm) (0.4.6)
+Requirement already satisfied: scipy&gt;=1.9 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (1.13.1)
+Requirement already satisfied: networkx&gt;=2.8 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (3.2.1)
+Requirement already satisfied: imageio&gt;=2.33 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (2.36.0)
+Requirement already satisfied: tifffile&gt;=2022.8.12 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (2024.8.30)
+Requirement already satisfied: lazy-loader&gt;=0.4 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (0.4)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib) (3.20.2)
+Requirement already satisfied: six&gt;=1.5 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
+Downloading tqdm-4.67.0-py3-none-any.whl (78 kB)
+Installing collected packages: tqdm
+Successfully installed tqdm-4.67.0</code></pre>
+</div>
 </div></div>
 <div id="9074a01c-b262-4458-87a4-c9116668aa4f" class="cell markdown">
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load Libraries</h2>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [44]:</pre></div><div id="7944e4f8-b0e5-44fd-ba14-70e8582d3c7d" class="cell" data-tags="[]" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.ndimage <span class="im">import</span> convolve, generic_filter</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage <span class="im">import</span> exposure</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyproj <span class="im">import</span> CRS</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="7944e4f8-b0e5-44fd-ba14-70e8582d3c7d" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.ndimage <span class="im">import</span> convolve, generic_filter</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage <span class="im">import</span> exposure</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyproj <span class="im">import</span> CRS</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [45]:</pre></div><div id="6a91cbe2-c813-42d1-8f0b-aab432a0b880" class="cell" data-tags="[]" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the DEM</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DEM_URL <span class="op">=</span> <span class="st">'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n35w112/USGS_1_n35w112_20240402.tif'</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dem_path <span class="op">=</span> <span class="st">'Data/USGS_1_n35w112_20240402.tif'</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download DEM if not present</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(dem_path):</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Downloading DEM..."</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(DEM_URL, stream<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(dem_path, <span class="st">'wb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> chunk <span class="kw">in</span> response.iter_content(chunk_size<span class="op">=</span><span class="dv">8192</span>):</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">file</span>.write(chunk)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Download complete."</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load DEM</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(dem_path) <span class="im">as</span> src:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    dem <span class="op">=</span> src.read(<span class="dv">1</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    profile <span class="op">=</span> src.profile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="6a91cbe2-c813-42d1-8f0b-aab432a0b880" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the DEM</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>DEM_URL <span class="op">=</span> <span class="st">'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n35w112/USGS_1_n35w112_20240402.tif'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dem_path <span class="op">=</span> <span class="st">'Data/USGS_1_n35w112_20240402.tif'</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download DEM if not present</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(dem_path):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Downloading DEM..."</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(DEM_URL, stream<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(dem_path, <span class="st">'wb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> chunk <span class="kw">in</span> response.iter_content(chunk_size<span class="op">=</span><span class="dv">8192</span>):</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">file</span>.write(chunk)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Download complete."</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load DEM</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(dem_path) <span class="im">as</span> src:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    dem <span class="op">=</span> src.read(<span class="dv">1</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    profile <span class="op">=</span> src.profile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloading DEM...
+Download complete.</code></pre>
+</div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [46]:</pre></div><div id="18e9fc5a-8925-4370-9c1a-6cc38b573b28" class="cell" data-tags="[]" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_raster_info(raster):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Queries raster metadata and prints details."""</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(raster, <span class="bu">str</span>):  <span class="co"># Path to raster</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> rasterio.<span class="bu">open</span>(raster) <span class="im">as</span> src:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            profile <span class="op">=</span> src.profile</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            transform <span class="op">=</span> src.transform</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            crs <span class="op">=</span> src.crs</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(raster, rasterio.io.DatasetReader):</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        profile <span class="op">=</span> raster.profile</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        transform <span class="op">=</span> raster.transform</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        crs <span class="op">=</span> raster.crs</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(raster, np.ndarray):</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Data Type: </span><span class="sc">{</span>raster<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">, Shape: </span><span class="sc">{</span>raster<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Input must be a path, rasterio object, or NumPy array."</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    units <span class="op">=</span> CRS.from_wkt(crs.to_wkt()).axis_info[<span class="dv">0</span>].unit_name <span class="cf">if</span> crs <span class="cf">else</span> <span class="st">'Unknown'</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Driver: </span><span class="sc">{</span>profile[<span class="st">'driver'</span>]<span class="sc">}</span><span class="ss">, Data Type: </span><span class="sc">{</span>profile[<span class="st">'dtype'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Resolution: </span><span class="sc">{</span>transform[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span><span class="bu">abs</span>(transform[<span class="dv">4</span>])<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>units<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Projection: </span><span class="sc">{</span>profile[<span class="st">'crs'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="18e9fc5a-8925-4370-9c1a-6cc38b573b28" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_raster_info(raster):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Queries raster metadata and prints details."""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(raster, <span class="bu">str</span>):  <span class="co"># Path to raster</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> rasterio.<span class="bu">open</span>(raster) <span class="im">as</span> src:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            profile <span class="op">=</span> src.profile</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            transform <span class="op">=</span> src.transform</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            crs <span class="op">=</span> src.crs</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(raster, rasterio.io.DatasetReader):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        profile <span class="op">=</span> raster.profile</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        transform <span class="op">=</span> raster.transform</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        crs <span class="op">=</span> raster.crs</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(raster, np.ndarray):</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Data Type: </span><span class="sc">{</span>raster<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">, Shape: </span><span class="sc">{</span>raster<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Input must be a path, rasterio object, or NumPy array."</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    units <span class="op">=</span> CRS.from_wkt(crs.to_wkt()).axis_info[<span class="dv">0</span>].unit_name <span class="cf">if</span> crs <span class="cf">else</span> <span class="st">'Unknown'</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Driver: </span><span class="sc">{</span>profile[<span class="st">'driver'</span>]<span class="sc">}</span><span class="ss">, Data Type: </span><span class="sc">{</span>profile[<span class="st">'dtype'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Resolution: </span><span class="sc">{</span>transform[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span><span class="bu">abs</span>(transform[<span class="dv">4</span>])<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>units<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Projection: </span><span class="sc">{</span>profile[<span class="st">'crs'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [47]:</pre></div><div id="b9552c9f-c31e-4038-a483-ac9fb0a7ff46" class="cell" data-tags="[]" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_neighborhood(shape<span class="op">=</span><span class="st">'circle'</span>, size<span class="op">=</span><span class="dv">5</span>):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Create a square or circular neighborhood."""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> shape <span class="op">==</span> <span class="st">'square'</span>:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.ones((size, size))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> shape <span class="op">==</span> <span class="st">'circle'</span>:</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        y, x <span class="op">=</span> np.ogrid[<span class="op">-</span>size<span class="op">//</span><span class="dv">2</span>:size<span class="op">//</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>, <span class="op">-</span>size<span class="op">//</span><span class="dv">2</span>:size<span class="op">//</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span>) <span class="op">&lt;=</span> (size<span class="op">//</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid shape. Choose 'square' or 'circle'."</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_filter(dem, footprint, filter_type<span class="op">=</span><span class="st">'mean'</span>):</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply filter using convolution."""</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filter_type <span class="op">==</span> <span class="st">'mean'</span>:</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> convolve(dem, footprint <span class="op">/</span> footprint.<span class="bu">sum</span>(), mode<span class="op">=</span><span class="st">'constant'</span>, cval<span class="op">=</span>np.nan)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filter_type <span class="kw">in</span> [<span class="st">'median'</span>, <span class="st">'max'</span>, <span class="st">'min'</span>]:</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        filter_funcs <span class="op">=</span> {<span class="st">'median'</span>: np.nanmedian, <span class="st">'max'</span>: np.nanmax, <span class="st">'min'</span>: np.nanmin}</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> generic_filter(dem, filter_funcs[filter_type], footprint<span class="op">=</span>footprint, mode<span class="op">=</span><span class="st">'constant'</span>, cval<span class="op">=</span>np.nan)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid filter type."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="b9552c9f-c31e-4038-a483-ac9fb0a7ff46" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_neighborhood(shape<span class="op">=</span><span class="st">'circle'</span>, size<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Create a square or circular neighborhood."""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> shape <span class="op">==</span> <span class="st">'square'</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.ones((size, size))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> shape <span class="op">==</span> <span class="st">'circle'</span>:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        y, x <span class="op">=</span> np.ogrid[<span class="op">-</span>size<span class="op">//</span><span class="dv">2</span>:size<span class="op">//</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>, <span class="op">-</span>size<span class="op">//</span><span class="dv">2</span>:size<span class="op">//</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span>) <span class="op">&lt;=</span> (size<span class="op">//</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid shape. Choose 'square' or 'circle'."</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_filter(dem, footprint, filter_type<span class="op">=</span><span class="st">'mean'</span>):</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply filter using convolution."""</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filter_type <span class="op">==</span> <span class="st">'mean'</span>:</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> convolve(dem, footprint <span class="op">/</span> footprint.<span class="bu">sum</span>(), mode<span class="op">=</span><span class="st">'constant'</span>, cval<span class="op">=</span>np.nan)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filter_type <span class="kw">in</span> [<span class="st">'median'</span>, <span class="st">'max'</span>, <span class="st">'min'</span>]:</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        filter_funcs <span class="op">=</span> {<span class="st">'median'</span>: np.nanmedian, <span class="st">'max'</span>: np.nanmax, <span class="st">'min'</span>: np.nanmin}</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> generic_filter(dem, filter_funcs[filter_type], footprint<span class="op">=</span>footprint, mode<span class="op">=</span><span class="st">'constant'</span>, cval<span class="op">=</span>np.nan)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid filter type."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [54]:</pre></div><div id="b1f84ed1-1d73-4af7-b0a5-31e41e97ad8a" class="cell" data-tags="[]" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_raster(data, title<span class="op">=</span><span class="st">'Raster'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>, clip_percentiles<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">99</span>), equalize_hist<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Plot raster data with optional histogram equalization."""</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    vmin <span class="op">=</span> np.nanpercentile(data, clip_percentiles[<span class="dv">0</span>])</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    vmax <span class="op">=</span> np.nanpercentile(data, clip_percentiles[<span class="dv">1</span>])</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    data_clipped <span class="op">=</span> np.clip(data, vmin, vmax)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    data_no_nan <span class="op">=</span> np.nan_to_num(data_clipped, nan<span class="op">=</span>vmin)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> equalize_hist:</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        data_eq <span class="op">=</span> exposure.equalize_hist(data_no_nan) <span class="op">*</span> <span class="dv">255</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        plt.imshow(data_eq, cmap<span class="op">=</span>cmap)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        plt.imshow(data_no_nan, cmap<span class="op">=</span>cmap, vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    plt.title(title)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    plt.colorbar(label<span class="op">=</span><span class="st">'Value'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="b1f84ed1-1d73-4af7-b0a5-31e41e97ad8a" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_raster(data, title<span class="op">=</span><span class="st">'Raster'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>, clip_percentiles<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">99</span>), equalize_hist<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Plot raster data with optional histogram equalization."""</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    vmin <span class="op">=</span> np.nanpercentile(data, clip_percentiles[<span class="dv">0</span>])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    vmax <span class="op">=</span> np.nanpercentile(data, clip_percentiles[<span class="dv">1</span>])</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    data_clipped <span class="op">=</span> np.clip(data, vmin, vmax)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    data_no_nan <span class="op">=</span> np.nan_to_num(data_clipped, nan<span class="op">=</span>vmin)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> equalize_hist:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        data_eq <span class="op">=</span> exposure.equalize_hist(data_no_nan) <span class="op">*</span> <span class="dv">255</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        plt.imshow(data_eq, cmap<span class="op">=</span>cmap)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        plt.imshow(data_no_nan, cmap<span class="op">=</span>cmap, vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    plt.title(title)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    plt.colorbar(label<span class="op">=</span><span class="st">'Value'</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [49]:</pre></div><div id="7103f021-4dad-49c8-b307-1ca377e57473" class="cell" data-tags="[]" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_tpi(original_dem, filtered_dem, normalize<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate TPI and optionally normalize to 0-255."""</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    tpi <span class="op">=</span> original_dem <span class="op">-</span> filtered_dem</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> normalize:</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        tpi_min, tpi_max <span class="op">=</span> np.nanmin(tpi), np.nanmax(tpi)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ((tpi <span class="op">-</span> tpi_min) <span class="op">/</span> (tpi_max <span class="op">-</span> tpi_min) <span class="op">*</span> <span class="dv">255</span>).astype(np.uint8)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tpi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="7103f021-4dad-49c8-b307-1ca377e57473" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_tpi(original_dem, filtered_dem, normalize<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate TPI and optionally normalize to 0-255."""</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    tpi <span class="op">=</span> original_dem <span class="op">-</span> filtered_dem</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> normalize:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        tpi_min, tpi_max <span class="op">=</span> np.nanmin(tpi), np.nanmax(tpi)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ((tpi <span class="op">-</span> tpi_min) <span class="op">/</span> (tpi_max <span class="op">-</span> tpi_min) <span class="op">*</span> <span class="dv">255</span>).astype(np.uint8)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tpi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [64]:</pre></div><div id="d869b9f7-bdb2-46f3-9d7b-2cac2c180964" class="cell" data-tags="[]" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> try_neighborhood_sizes(dem, sizes, shape<span class="op">=</span><span class="st">'circle'</span>, normalize<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply multiple neighborhood sizes and plot TPI."""</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    footprint1 <span class="op">=</span> create_neighborhood(shape<span class="op">=</span>shape, size<span class="op">=</span><span class="dv">3</span>) <span class="co"># smooth the DEM first with 3x3 mean smoothing</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    smoothed_dem <span class="op">=</span> apply_filter(dem, footprint1, filter_type<span class="op">=</span><span class="st">'mean'</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> size <span class="kw">in</span> sizes:</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        footprint2 <span class="op">=</span> create_neighborhood(shape<span class="op">=</span>shape, size<span class="op">=</span>size)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        filtered_dem <span class="op">=</span> apply_filter(dem, footprint2, filter_type<span class="op">=</span><span class="st">'mean'</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        tpi <span class="op">=</span> calculate_tpi(smoothed_dem, filtered_dem, normalize<span class="op">=</span>normalize)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        plot_raster(tpi, title<span class="op">=</span><span class="ss">f'TPI with </span><span class="sc">{</span>shape<span class="sc">}</span><span class="ss">, size=</span><span class="sc">{</span>size<span class="sc">}</span><span class="ss">'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="d869b9f7-bdb2-46f3-9d7b-2cac2c180964" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> try_neighborhood_sizes(dem, sizes, shape<span class="op">=</span><span class="st">'circle'</span>, normalize<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply multiple neighborhood sizes and plot TPI."""</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    footprint1 <span class="op">=</span> create_neighborhood(shape<span class="op">=</span>shape, size<span class="op">=</span><span class="dv">3</span>) <span class="co"># smooth the DEM first with 3x3 mean smoothing</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    smoothed_dem <span class="op">=</span> apply_filter(dem, footprint1, filter_type<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> size <span class="kw">in</span> sizes:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        footprint2 <span class="op">=</span> create_neighborhood(shape<span class="op">=</span>shape, size<span class="op">=</span>size)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        filtered_dem <span class="op">=</span> apply_filter(dem, footprint2, filter_type<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        tpi <span class="op">=</span> calculate_tpi(smoothed_dem, filtered_dem, normalize<span class="op">=</span>normalize)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        plot_raster(tpi, title<span class="op">=</span><span class="ss">f'TPI with </span><span class="sc">{</span>shape<span class="sc">}</span><span class="ss">, size=</span><span class="sc">{</span>size<span class="sc">}</span><span class="ss">'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [65]:</pre></div><div id="f4ea5347-79bd-4e76-92b0-e7efc38abbef" class="cell" data-tags="[]" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>] <span class="co"># try different mean filter sizes for TPI</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>try_neighborhood_sizes(dem, sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="f4ea5347-79bd-4e76-92b0-e7efc38abbef" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>] <span class="co"># try different mean filter sizes for TPI</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>try_neighborhood_sizes(dem, sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -408,6 +452,13 @@
 <div>
 <figure class="figure">
 <p><a href="04_TPI_files/figure-html/cell-10-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="04_TPI_files/figure-html/cell-10-output-5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="04_TPI_files/figure-html/cell-10-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="04_TPI_files/figure-html/cell-10-output-6.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -832,7 +883,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

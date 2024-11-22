@@ -61,10 +61,10 @@ enhancement</article-title>
 <corresp id="cor-1">Ryan.lima@nau.edu</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-21">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-22">
 <year>2024</year>
 <month>11</month>
-<day>21</day>
+<day>22</day>
 </pub-date>
 
 
@@ -109,7 +109,7 @@ enhancement</article-title>
 <back>
 </back>
 
-<sub-article article-type="notebook" id="nb-21-nb-article">
+<sub-article article-type="notebook" id="nb-27-nb-article">
 <front-stub>
 <title-group>
 <article-title>Mapping potential lineaments across the State of Arizona
@@ -565,8 +565,48 @@ enhancement</article-title>
     <title>Install Packages</title>
     </sec>
     <sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-2" specific-use="notebook-content">
-    <code language="python"># !pip install numpy opencv-python rasterio matplotlib requests tqdm skimage
+    <code language="python">#!pip install numpy opencv-python rasterio matplotlib requests tqdm scikit-image
     </code>
+    <boxed-text>
+      <preformat>Requirement already satisfied: numpy in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (2.0.2)
+Requirement already satisfied: opencv-python in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (4.10.0.84)
+Requirement already satisfied: rasterio in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (1.4.1)
+Requirement already satisfied: matplotlib in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (3.9.2)
+Requirement already satisfied: requests in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (2.32.3)
+Collecting tqdm
+  Using cached tqdm-4.67.0-py3-none-any.whl.metadata (57 kB)
+Requirement already satisfied: scikit-image in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (0.24.0)
+Requirement already satisfied: affine in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (2.4.0)
+Requirement already satisfied: attrs in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (24.2.0)
+Requirement already satisfied: certifi in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (2024.8.30)
+Requirement already satisfied: click&gt;=4.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (8.1.7)
+Requirement already satisfied: cligj&gt;=0.5 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (0.7.2)
+Requirement already satisfied: click-plugins in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (1.1.1)
+Requirement already satisfied: pyparsing in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (3.2.0)
+Requirement already satisfied: importlib-metadata in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from rasterio) (8.5.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (1.3.0)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (4.54.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (1.4.7)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (24.1)
+Requirement already satisfied: pillow&gt;=8 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (11.0.0)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (2.9.0)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from matplotlib) (6.4.5)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from requests) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from requests) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from requests) (2.2.3)
+Requirement already satisfied: colorama in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from tqdm) (0.4.6)
+Requirement already satisfied: scipy&gt;=1.9 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (1.13.1)
+Requirement already satisfied: networkx&gt;=2.8 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (3.2.1)
+Requirement already satisfied: imageio&gt;=2.33 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (2.36.0)
+Requirement already satisfied: tifffile&gt;=2022.8.12 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (2024.8.30)
+Requirement already satisfied: lazy-loader&gt;=0.4 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from scikit-image) (0.4)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib) (3.20.2)
+Requirement already satisfied: six&gt;=1.5 in c:\users\rl587\appdata\local\anaconda3\envs\atur-karst\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
+Downloading tqdm-4.67.0-py3-none-any.whl (78 kB)
+Installing collected packages: tqdm
+Successfully installed tqdm-4.67.0</preformat>
+    </boxed-text>
     </sec>
     <sec id="cell-9074a01c-b262-4458-87a4-c9116668aa4f-nb-2" specific-use="notebook-content">
   </sec>
@@ -605,6 +645,10 @@ with rasterio.open(dem_path) as src:
     dem = src.read(1)
     profile = src.profile
     </code>
+    <boxed-text>
+      <preformat>Downloading DEM...
+Download complete.</preformat>
+    </boxed-text>
     </sec>
     <sec id="cell-18e9fc5a-8925-4370-9c1a-6cc38b573b28-nb-2" specific-use="notebook-content">
     <code language="python">def query_raster_info(raster):
@@ -694,7 +738,7 @@ def apply_filter(dem, footprint, filter_type='mean'):
     </code>
     </sec>
     <sec id="f4ea5347-79bd-4e76-92b0-e7efc38abbef-nb-2" specific-use="notebook-content">
-    <code language="python">sizes = [5, 10, 20, 30, 40] # try different mean filter sizes for TPI
+    <code language="python">sizes = [5, 10, 20, 30, 40, 50] # try different mean filter sizes for TPI
 try_neighborhood_sizes(dem, sizes)
     </code>
     <boxed-text>
@@ -711,6 +755,9 @@ try_neighborhood_sizes(dem, sizes)
     </boxed-text>
     <boxed-text>
       <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-5.png" />
+    </boxed-text>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="04_TPI_files/figure-jats/cell-10-output-6.png" />
     </boxed-text>
     </sec>
   </sec>
@@ -1068,6 +1115,768 @@ plt.show()</code>
 <sub-article article-type="notebook" id="nb-15-nb-5">
 <front-stub>
 <title-group>
+<article-title>07 Linking TPI with Canny Edges</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<sec id="cell-2d862b34-a9f8-42d9-a9be-8a032bf5fd1a-nb-5" specific-use="notebook-content">
+<p><bold>Scientific Validity</bold></p>
+<p><bold>TPI Analysis:</bold> Using TPI to highlight features such as
+ridges and valleys is a well-established method. Varying neighborhood
+sizes will help capture features at different spatial scales.</p>
+<p><bold>Edge Detection:</bold> Applying the Canny edge detection
+algorithm on various rasters (DEM, hillshade, TPI) is valid for
+highlighting discontinuities that may indicate geological features, such
+as faults and lineaments.</p>
+<p><bold>Previous Studies</bold></p>
+<p>find</p>
+<p><bold>Validation</bold></p>
+<list list-type="bullet">
+  <list-item>
+    <p>After generating edge-detected features, validation is key.
+    Compare your results with known geological maps, aerial imagery, or
+    field observations to assess accuracy.</p>
+  </list-item>
+  <list-item>
+    <p>Metrics like precision, recall, and overall accuracy can quantify
+    the effectiveness of different approaches.</p>
+  </list-item>
+</list>
+</sec>
+<sec id="cell-22465816-1278-439a-8ac9-99b881d9c6a5-nb-5" specific-use="notebook-content">
+<sec id="approach-refinement-nb-5">
+  <title>Approach Refinement</title>
+  <p>Hillshade Consideration: A multi-directional hillshade will capture
+  more nuanced terrain features than a single-directional one. Ensure
+  you apply it at appropriate sun angles.</p>
+  <p>DEM Smoothing: Your workflow smooths the DEM with a small 3x3
+  kernel before applying the neighborhood filters for TPI. This is
+  reasonable but monitor if excessive smoothing removes critical
+  small-scale features.</p>
+  <p>Edge Detection Parameters: Thresholds in Canny edge detection can
+  significantly impact results. Consider automating threshold
+  optimization (e.g., using Otsu’s method) for consistency across
+  rasters.</p>
+</sec>
+<sec id="this-notebook-attempts-to-nb-5">
+  <title>This notebook attempts to:</title>
+  <list list-type="bullet">
+    <list-item>
+      <p>Apply edge detection on all TPI results, the DEM, and the
+      hillshade, then compare outputs visually and quantitatively.</p>
+    </list-item>
+    <list-item>
+      <p>Experiment with additional derivatives like slope and curvature
+      for comparison.</p>
+    </list-item>
+    <list-item>
+      <p>Integrate all detected edges into a single dataset, possibly
+      weighting edges from different inputs, and evaluate which raster
+      contributes most to feature detection.</p>
+    </list-item>
+  </list>
+  </sec>
+  <sec id="cell-9074a01c-b262-4458-87a4-c9116668aa4f-nb-5" specific-use="notebook-content">
+</sec>
+<sec id="workflow-nb-5">
+  <title>Workflow</title>
+  <sec id="load-libraries-nb-5">
+    <title>00 Load Libraries</title>
+    </sec>
+    <sec id="cell-379bfe98-8bda-4504-a275-7343211cbf17-nb-5" specific-use="notebook-content">
+    <code language="python">import os
+import numpy as np
+import cv2
+import rasterio
+import matplotlib.pyplot as plt
+from skimage import exposure
+from pyproj import CRS
+import requests
+from scipy.ndimage import convolve
+    </code>
+    </sec>
+    <sec id="b9e0bbcc-b111-4301-8346-41b6469c8f90-nb-5" specific-use="notebook-content">
+  </sec>
+  <sec id="download-and-load-dem-nb-5">
+    <title>01 Download and Load DEM</title>
+    </sec>
+    <sec id="cell-5e994b97-4602-4459-a3fb-8f58bf2416fa-nb-5" specific-use="notebook-content">
+    <code language="python"># Step 1: Download and Load DEM
+DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n35w112/USGS_1_n35w112_20240402.tif'
+dem_path = 'Data/USGS_1_n35w112_20240402.tif'
+
+if not os.path.exists(dem_path):
+    print(&quot;Downloading DEM...&quot;)
+    response = requests.get(DEM_URL, stream=True)
+    with open(dem_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=8192):
+            file.write(chunk)
+    print(&quot;Download complete.&quot;)</code>
+    </sec>
+    <sec id="e6e5e054-ffa9-4a15-a176-5b00d1c7d60a-nb-5" specific-use="notebook-content">
+    <code language="python"># Load DEM
+with rasterio.open(dem_path) as src:
+    dem = src.read(1)
+    profile = src.profile
+    transform = src.transform
+
+# Plot original DEM
+plt.figure(figsize=(12, 8))
+plt.title(&quot;Original DEM&quot;)
+plt.imshow(dem, cmap='terrain')
+plt.colorbar(label='Elevation (m)')
+plt.show()</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-4-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="dbadd5ab-bc07-46a8-bca0-988b69b87bf2-nb-5" specific-use="notebook-content">
+    <code language="python"># Normalize DEM
+dem_normalized = cv2.normalize(dem, None, 0, 255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+
+# plot normalized dem 
+plt.figure(figsize=(12, 8))
+plt.title(&quot;Normalized DEM&quot;)
+plt.imshow(dem_normalized, cmap='terrain')
+plt.colorbar(label='Elevation (m)')
+plt.show()
+    </code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-5-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-02b6f20d-7e0d-465a-ab39-8a0723f7ac49-nb-5" specific-use="notebook-content">
+  </sec>
+  <sec id="create-neighborhood-and-tpi-calculation-nb-5">
+    <title>02 Create neighborhood and TPI Calculation</title>
+    </sec>
+    <sec id="cell-0f925e57-20a2-4fca-9583-8dd4a17991a8-nb-5" specific-use="notebook-content">
+    <code language="python">def create_neighborhood(shape='circle', size=5):
+    if shape == 'square':
+        return np.ones((size, size))
+    elif shape == 'circle':
+        y, x = np.ogrid[-size//2:size//2+1, -size//2:size//2+1]
+        return (x**2 + y**2) &lt;= (size//2)**2
+    else:
+        raise ValueError(&quot;Invalid shape. Choose 'square' or 'circle'.&quot;)
+    </code>
+    </sec>
+    <sec id="cell-1b6500b8-9f02-4dea-acf2-f30543af7fcc-nb-5" specific-use="notebook-content">
+    <code language="python">def apply_filter(dem, footprint, filter_type='mean'):
+    if filter_type == 'mean':
+        return convolve(dem, footprint / footprint.sum(), mode='constant', cval=np.nan)
+    elif filter_type in ['median', 'max', 'min']:
+        filter_funcs = {'median': np.nanmedian, 'max': np.nanmax, 'min': np.nanmin}
+        return generic_filter(dem, filter_funcs[filter_type], footprint=footprint, mode='constant', cval=np.nan)
+    else:
+        raise ValueError(&quot;Invalid filter type.&quot;)</code>
+    </sec>
+    <sec id="ce72c0d0-11a2-43c5-808d-15961fad8df2-nb-5" specific-use="notebook-content">
+    <code language="python">def calculate_tpi(original_dem, filtered_dem):
+    return original_dem - filtered_dem
+
+def generate_tpi(dem, sizes, shape='circle'):
+    tpi_rasters = {}
+    for size in sizes:
+        footprint = create_neighborhood(shape=shape, size=size)
+        filtered_dem = apply_filter(dem, footprint, filter_type='mean')
+        tpi = calculate_tpi(dem, filtered_dem)
+        tpi_rasters[size] = tpi
+    return tpi_rasters</code>
+    </sec>
+    <sec id="cell-95dfc347-fe98-4f1d-a676-c7e61f9bc4df-nb-5" specific-use="notebook-content">
+    <code language="python">sizes = [5,10,25,40,50, 75]  # Neighborhood sizes for TPI
+tpi_rasters = generate_tpi(dem, sizes)</code>
+    </sec>
+    <sec id="cell-58285188-ea91-4914-abd2-1f6341a69a64-nb-5" specific-use="notebook-content">
+    <code language="python">def plot_multiple_dems(dem_list, titles, cmap='Greys_r', clip_percentiles=(1, 99), equalize_hist=True):
+    &quot;&quot;&quot;
+    Plots multiple DEMs in a grid layout.
+
+    Parameters:
+        dem_list (list): List of DEMs to be plotted (numpy arrays).
+        titles (list): List of titles for each DEM, must match the length of dem_list.
+        cmap (str): Colormap for the plots.
+        clip_percentiles (tuple): Percentiles for clipping (e.g., (1, 99)).
+        equalize_hist (bool): Whether to apply histogram equalization.
+
+    Returns:
+        None: Displays the plots.
+    &quot;&quot;&quot;
+    num_dems = len(dem_list)
+    cols = 3  # Number of columns in the grid
+    rows = (num_dems + cols - 1) // cols  # Calculate rows dynamically
+    
+    fig, axes = plt.subplots(rows, cols, figsize=(15, 5 * rows))
+    axes = axes.flatten()  # Flatten axes for easier indexing
+    
+    for i, (dem, title) in enumerate(zip(dem_list, titles)):
+        vmin = np.nanpercentile(dem, clip_percentiles[0])
+        vmax = np.nanpercentile(dem, clip_percentiles[1])
+        dem_clipped = np.clip(dem, vmin, vmax)
+        dem_no_nan = np.nan_to_num(dem_clipped, nan=vmin)
+        
+        if equalize_hist:
+            dem_eq = exposure.equalize_hist(dem_no_nan) * 255
+            axes[i].imshow(dem_eq, cmap=cmap)
+        else:
+            axes[i].imshow(dem_no_nan, cmap=cmap, vmin=vmin, vmax=vmax)
+        
+        axes[i].set_title(f&quot;{title}&quot;)
+        axes[i].axis('off')
+    
+    # Hide empty axes
+    for j in range(i + 1, len(axes)):
+        axes[j].axis('off')
+    
+    plt.tight_layout()
+    plt.show()</code>
+    </sec>
+    <sec id="cell-81b477c3-af6b-4cc2-b37a-1656b12f9ce8-nb-5" specific-use="notebook-content">
+    <code language="python"># Prepare DEMs and titles
+dem_list = [tpi_rasters[size] for size in sizes]
+titles = [f&quot;TPI - Size {size}&quot; for size in sizes]
+
+# Call the function
+plot_multiple_dems(dem_list, titles)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-11-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-4edb961a-aed0-4802-9e8c-c5e352cfa216-nb-5" specific-use="notebook-content">
+    <sec id="results-of-tpi-analysis-nb-5">
+      <title>Results of TPI analysis</title>
+      <p>It appears that TPI does a very good job at highlighting small
+      landscape features, at smaller neighborhood sizes it finds more
+      detail but the contrast is less, while at larger neighborhoods the
+      smaller details get a bit blurred while the contrast is rampped
+      up.</p>
+      <p>Try looking at these without histogram equalization and using
+      cmaps: ‘Greys_r’ and ‘Viridis’</p>
+      </sec>
+      <sec id="cell-030c9a56-c3b6-46e9-9ed2-78cc177edc17-nb-5" specific-use="notebook-content">
+    </sec>
+  </sec>
+  <sec id="generate-multi-directional-hillshade-nb-5">
+    <title>03 Generate Multi-directional Hillshade</title>
+    </sec>
+    <sec id="cell-7fa82437-4bcd-4820-94ae-5db070f2dc22-nb-5" specific-use="notebook-content">
+    <code language="python">def generate_hillshade(dem, azimuth, altitude):
+    &quot;&quot;&quot;
+    Generate hillshade from DEM for a given azimuth and altitude.
+    
+    Parameters:
+        dem (numpy array): The input DEM.
+        azimuth (float): Azimuth angle of illumination (degrees).
+        altitude (float): Altitude angle of illumination (degrees).
+
+    Returns:
+        numpy array: Hillshade raster.
+    &quot;&quot;&quot;
+    x, y = np.gradient(dem)  # Calculate gradients in x and y directions
+    slope = np.pi / 2 - np.arctan(np.sqrt(x**2 + y**2))  # Slope in radians
+    aspect = np.arctan2(-x, y)  # Aspect in radians
+
+    azimuth_rad = np.deg2rad(azimuth)
+    altitude_rad = np.deg2rad(altitude)
+
+    # Illumination model
+    shaded = (
+        np.sin(altitude_rad) * np.sin(slope) +
+        np.cos(altitude_rad) * np.cos(slope) * np.cos(azimuth_rad - aspect)
+    )
+    return np.clip(shaded, 0, 1)  # Ensure values are between 0 and 1
+
+def generate_hillshades(dem, azimuths=[45, 135, 225, 315], altitude=30, stat='all'):
+    &quot;&quot;&quot;
+    Generate combined hillshades using mean, max, or median statistics.
+
+    Parameters:
+        dem (numpy array): The input DEM.
+        azimuths (list): List of azimuth angles for hillshade generation.
+        altitude (float): Altitude angle of illumination (degrees).
+        stat (str): Statistic to apply ('mean', 'max', 'median', or 'all').
+
+    Returns:
+        dict: A dictionary with hillshade statistics as keys and arrays as values.
+    &quot;&quot;&quot;
+    hillshade_stack = [generate_hillshade(dem, azimuth, altitude) for azimuth in azimuths]
+
+    # Calculate statistics
+    results = {}
+    if stat in ['mean', 'all']:
+        results['mean'] = np.mean(hillshade_stack, axis=0)
+    if stat in ['max', 'all']:
+        results['max'] = np.max(hillshade_stack, axis=0)
+    if stat in ['median', 'all']:
+        results['median'] = np.median(hillshade_stack, axis=0)
+
+    return results
+
+def plot_hillshades(hillshades, cmap='Greys'):
+    &quot;&quot;&quot;
+    Plot multiple hillshade results.
+
+    Parameters:
+        hillshades (dict): Dictionary of hillshade results with keys as labels.
+        cmap (str): Colormap for plotting.
+
+    Returns:
+        None: Displays the plots.
+    &quot;&quot;&quot;
+    keys = list(hillshades.keys())
+    n = len(keys)
+    
+    fig, axes = plt.subplots(1, n, figsize=(5 * n, 8))
+    for i, key in enumerate(keys):
+        ax = axes[i]
+        ax.imshow(hillshades[key], cmap=cmap)
+        ax.set_title(f&quot;Hillshade ({key})&quot;)
+        ax.axis('off')
+    
+    plt.tight_layout()
+    plt.show()</code>
+    </sec>
+    <sec id="bcfd3dec-c162-4e53-b794-3a06d7e8cf3d-nb-5" specific-use="notebook-content">
+    <code language="python"># Generate all hillshade statistics
+hillshade_stats = generate_hillshades(dem_normalized, azimuths=[45, 135, 225, 315], altitude=30, stat='all')
+
+# Plot the results
+plot_hillshades(hillshade_stats)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-13-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-8f3e410a-125b-4cec-9625-7823504c7466-nb-5" specific-use="notebook-content">
+    <sec id="hillshade-results-nb-5">
+      <title>Hillshade results</title>
+      <p>Multi-directional hillshade appears to work very well at
+      pulling out landscape detail as well, particularly the mean and
+      max, and they work better on the normalized dem than the
+      un-normalize dem.</p>
+      </sec>
+      <sec id="cell-0b3798fe-d55d-41d0-8073-8be0798d5713-nb-5" specific-use="notebook-content">
+    </sec>
+  </sec>
+  <sec id="canny-edge-detection-nb-5">
+    <title>04 Canny Edge Detection</title>
+    </sec>
+    <sec id="d04f6fa1-b9d2-4cbc-9501-1ec8db643570-nb-5" specific-use="notebook-content">
+    <code language="python">#  Canny Edge Detection
+def apply_canny_edge_detection(data, threshold1, threshold2, aperture_size=3):
+    &quot;&quot;&quot;
+    Apply Canny edge detection to a raster.
+
+    Parameters:
+        data (numpy array): Input raster data.
+        threshold1 (float): Lower threshold for edge detection.
+        threshold2 (float): Upper threshold for edge detection.
+        aperture_size (int): Aperture size for the Sobel operator.
+
+    Returns:
+        numpy array: Edges detected in the input raster.
+    &quot;&quot;&quot;
+    edges = cv2.Canny(data, threshold1, threshold2, apertureSize=aperture_size)
+    return edges
+
+def test_canny_parameters(raster, thresholds, aperture_sizes):
+    &quot;&quot;&quot;
+    Test different Canny edge detection parameters on a raster.
+
+    Parameters:
+        raster (numpy array): Input raster (should be normalized to uint8).
+        thresholds (list of tuples): List of (threshold1, threshold2) pairs.
+        aperture_sizes (list): List of aperture sizes to test.
+
+    Returns:
+        None: Displays the results as a grid of plots.
+    &quot;&quot;&quot;
+    raster_uint8 = normalize_to_uint8(raster)  # Ensure raster is uint8
+    results = []
+    param_combinations = []
+
+    for threshold1, threshold2 in thresholds:
+        for aperture_size in aperture_sizes:
+            edges = apply_canny_edge_detection(raster_uint8, threshold1, threshold2, aperture_size)
+            results.append(edges)
+            param_combinations.append(f&quot;T1={threshold1}, T2={threshold2}, Aperture={aperture_size}&quot;)
+
+    # Plot results
+    n = len(results)
+    cols = 3  # Number of columns
+    rows = (n + cols - 1) // cols
+    fig, axes = plt.subplots(rows, cols, figsize=(15, 5 * rows))
+    axes = axes.flatten()
+
+    for i, (result, params) in enumerate(zip(results, param_combinations)):
+        ax = axes[i]
+        ax.imshow(result, cmap='gray')
+        ax.set_title(params)
+        ax.axis('off')
+
+    # Hide unused axes
+    for j in range(i + 1, len(axes)):
+        axes[j].axis('off')
+
+    plt.tight_layout()
+    plt.show()  
+    </code>
+    </sec>
+    <sec id="f5c6bdff-af47-4a6d-9a38-e6f72a1bdd93-nb-5" specific-use="notebook-content">
+    <code language="python"># Define thresholds and aperture sizes to test
+thresholds_to_test = [(230,244),(230,254),(240,254),(250,255), (254,255)]
+aperture_sizes_to_test = [3]
+
+# Test Canny parameters on the mean hillshade
+test_canny_parameters(hillshade_stats['mean'], thresholds_to_test, aperture_sizes_to_test)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-15-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-755a0299-e1c9-4a8a-8fd1-8f6e3b037aa3-nb-5" specific-use="notebook-content">
+    <code language="python"># Test Canny parameters on the max hillshade
+test_canny_parameters(hillshade_stats['max'], thresholds_to_test, aperture_sizes_to_test)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-16-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-609bbfc0-e2ac-4197-9b8f-f19207090414-nb-5" specific-use="notebook-content">
+    <code language="python"># canny edge detector requires input data that is 8-bit unsigned interger, though the dem is probably a float32 so we need to create a function that converts the data to uint8
+
+# Normalize and convert to uint8 for Canny edge detection
+def normalize_to_uint8(data):
+    &quot;&quot;&quot;
+    Normalize a raster to the range [0, 255] and convert to uint8.
+    
+    Parameters:
+        data (numpy array): Input raster data.
+
+    Returns:
+        numpy array: Normalized raster data as uint8.
+    &quot;&quot;&quot;
+    data_normalized = cv2.normalize(data, None, 0, 255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+    return data_normalized</code>
+    </sec>
+    <sec id="cell-69680cd1-6bf4-44ab-a9be-ee99e162b506-nb-5" specific-use="notebook-content">
+    <code language="python"># now we run tests to see the best canny paramters for TPI
+
+tpi10 = normalize_to_uint8(tpi_rasters[10])
+
+
+thresholds_to_test = [(50,100),(40,100),(30,100)]
+aperture_sizes_to_test = [3]
+
+test_canny_parameters(tpi10, thresholds_to_test, aperture_sizes_to_test)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-18-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="de89e1d2-f003-4690-af2c-60dd7be73a6c-nb-5" specific-use="notebook-content">
+    <code language="python"># SO it seems the TPI needs lower thresholds than the multi-directional hillshade but what if we combine the TPI and multi-dimensional hillshade?
+
+def combine_rasters(raster1, raster2, method='mean'):
+    &quot;&quot;&quot;
+    Combine two rasters using a specified method (mean, median, or max).
+
+    Parameters:
+        raster1 (numpy array): First input raster (e.g., Hillshade Max).
+        raster2 (numpy array): Second input raster (e.g., Normalized TPI).
+        method (str): Combination method ('mean', 'median', 'max').
+
+    Returns:
+        numpy array: Combined raster.
+    &quot;&quot;&quot;
+    if method == 'mean':
+        return np.nanmean(np.array([raster1, raster2]), axis=0)
+    elif method == 'median':
+        return np.nanmedian(np.array([raster1, raster2]), axis=0)
+    elif method == 'max':
+        return np.nanmax(np.array([raster1, raster2]), axis=0)
+    else:
+        raise ValueError(&quot;Invalid method. Choose 'mean', 'median', or 'max'.&quot;)
+    </code>
+    </sec>
+    <sec id="e298159e-d105-4ddc-8689-1293667af4e1-nb-5" specific-use="notebook-content">
+    <code language="python"># Normalize rasters to uint8
+hillshade_max_normalized = normalize_to_uint8(hillshade_stats['max'])
+tpi10_normalized = normalize_to_uint8(tpi_rasters[10])
+
+# Combine using different methods
+combined_mean = combine_rasters(hillshade_max_normalized, tpi10_normalized, method='mean')
+combined_median = combine_rasters(hillshade_max_normalized, tpi10_normalized, method='median')
+combined_max = combine_rasters(hillshade_max_normalized, tpi10_normalized, method='max')
+
+# Plot results
+def plot_combined_results(combined_rasters, methods):
+    &quot;&quot;&quot;
+    Plot combined raster results for different methods.
+
+    Parameters:
+        combined_rasters (list): List of combined rasters.
+        methods (list): List of method names corresponding to the rasters.
+
+    Returns:
+        None: Displays the plots.
+    &quot;&quot;&quot;
+    fig, axes = plt.subplots(1, len(combined_rasters), figsize=(15, 5))
+    for ax, raster, method in zip(axes, combined_rasters, methods):
+        ax.imshow(raster, cmap='gray')
+        ax.set_title(f&quot;Combined ({method})&quot;)
+        ax.axis('off')
+    plt.tight_layout()
+    plt.show()
+
+# Plot all combinations
+plot_combined_results(
+    [combined_mean, combined_median, combined_max],
+    ['Mean', 'Median', 'Max']
+)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-20-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="ff63e7b6-f311-4af0-b987-bf28f32404e4-nb-5" specific-use="notebook-content">
+    <code language="python"># hmm that seems to reduce contrast which is not what we want for crisp edges. lets try to increase contrast with thresholding on the TPI</code>
+    </sec>
+    <sec id="a25ba374-1e3d-4352-ba60-cf0a86024d11-nb-5" specific-use="notebook-content">
+    <code language="python">def apply_threshold(raster, lower_threshold, upper_threshold):
+    &quot;&quot;&quot;
+    Apply binary thresholding to a raster.
+    
+    Parameters:
+        raster (numpy array): Input raster.
+        lower_threshold (float): Minimum value to include (everything below becomes 0).
+        upper_threshold (float): Maximum value to include (everything above becomes 255).
+
+    Returns:
+        numpy array: Thresholded raster.
+    &quot;&quot;&quot;
+    thresholded = np.where((raster &gt;= lower_threshold) &amp; (raster &lt;= upper_threshold), 255, 0)
+    return thresholded.astype(np.uint8)</code>
+    </sec>
+    <sec id="e2993b5d-74f5-4db0-a655-8b80f5355355-nb-5" specific-use="notebook-content">
+    <code language="python"># Set thresholds
+lower_threshold = 50
+upper_threshold = 75
+
+# Apply thresholding to TPI raster (e.g., TPI for size 10)
+tpi10_normalized = normalize_to_uint8(tpi_rasters[10])
+tpi10_thresholded = apply_threshold(tpi10_normalized, lower_threshold, upper_threshold)
+
+# Plot the result
+plt.figure(figsize=(10, 8))
+plt.title(f&quot;TPI Thresholded (Lower: {lower_threshold}, Upper: {upper_threshold})&quot;)
+plt.imshow(tpi10_thresholded, cmap='gray')
+plt.axis('off')
+plt.colorbar(label='Value')
+plt.show()</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-23-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="f5dde266-1035-43df-aa00-1df3843433da-nb-5" specific-use="notebook-content">
+    <code language="python">import cv2
+
+tpi10_adaptive = cv2.adaptiveThreshold(
+    tpi10_normalized, 
+    255, 
+    cv2.ADAPTIVE_THRESH_MEAN_C, 
+    cv2.THRESH_BINARY, 
+    blockSize=15, 
+    C=2
+)
+
+# Plot the adaptive thresholded TPI
+plt.figure(figsize=(10, 8))
+plt.title(&quot;Adaptive Thresholding (TPI)&quot;)
+plt.imshow(tpi10_adaptive, cmap='gray')
+plt.axis('off')
+plt.show()</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-24-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="c0b18689-64bf-4a86-b77d-6a27f315430d-nb-5" specific-use="notebook-content">
+    <code language="python">tpi75_normalized = normalize_to_uint8(tpi_rasters[75])
+
+tpi75_adaptive = cv2.adaptiveThreshold(
+    tpi75_normalized, 
+    255, 
+    cv2.ADAPTIVE_THRESH_MEAN_C, 
+    cv2.THRESH_BINARY, 
+    blockSize=15, 
+    C=2
+)
+
+# Plot the adaptive thresholded TPI
+plt.figure(figsize=(10, 8))
+plt.title(&quot;Adaptive Thresholding (TPI)&quot;)
+plt.imshow(tpi75_adaptive, cmap='gray')
+plt.axis('off')
+plt.show()</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-25-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-15a90307-b614-47ab-937d-261e5a8e32a8-nb-5" specific-use="notebook-content">
+    <code language="python"># it seems like applying an adaptive threshold to a TPI 75 does a good job of thinning the lines and increasing contrast which might really improve results in pCI geomatica. </code>
+    </sec>
+    <sec id="cell-77ae03b0-6090-4fae-916d-f6d30af98a5b-nb-5" specific-use="notebook-content">
+    <code language="python">
+thresholds_to_test = [(230,244),(230,254),(240,254),(255,255), (254,255)]
+aperture_sizes_to_test = [3]
+
+# Test Canny parameters on the mean hillshade
+test_canny_parameters(tpi75_adaptive, thresholds_to_test, aperture_sizes_to_test)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-27-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="d6958870-ed4c-40d7-8182-f6c8da5198b5-nb-5" specific-use="notebook-content">
+    <code language="python"># Initialize Canny edge detection results
+canny_results = {}
+
+
+# set threshold values
+
+# Parameters for Canny Edge Detection
+threshold1 = 100
+threshold2 = 200
+aperture_size = 3
+
+# Apply Canny Edge Detection
+canny_results['raw_dem'] = apply_canny_edge_detection(normalize_to_uint8(dem), threshold1, threshold2, aperture_size)
+
+# Apply edge detection on all hillshade statistics
+for stat, hillshade in hillshade_stats.items():
+    canny_results[f'hillshade_{stat}'] = apply_canny_edge_detection(
+        cv2.normalize(hillshade, None, 0, 255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U),
+        threshold1,
+        threshold2,
+        aperture_size
+    )
+
+# Apply edge detection on all TPI results
+for size, tpi in tpi_rasters.items():
+    tpi_normalized = cv2.normalize(tpi, None, 0, 255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+    canny_results[f'tpi_{size}'] = apply_canny_edge_detection(tpi_normalized, threshold1, threshold2, aperture_size)</code>
+    </sec>
+    <sec id="cell-4d83dbe3-38eb-4819-8e4b-b728839e6f88-nb-5" specific-use="notebook-content">
+    <code language="python">def plot_canny_results(canny_results, cmap='gray'):
+    &quot;&quot;&quot;
+    Plot edge detection results for comparison.
+
+    Parameters:
+        canny_results (dict): Dictionary of edge detection results with keys as labels.
+        cmap (str): Colormap for the plots.
+
+    Returns:
+        None: Displays the plots.
+    &quot;&quot;&quot;
+    keys = list(canny_results.keys())
+    n = len(keys)
+    cols = 3  # Number of columns for the plot grid
+    rows = (n + cols - 1) // cols  # Calculate rows dynamically
+
+    fig, axes = plt.subplots(rows, cols, figsize=(5 * cols, 5 * rows))
+    axes = axes.flatten()
+
+    for i, key in enumerate(keys):
+        ax = axes[i]
+        ax.imshow(canny_results[key], cmap=cmap)
+        ax.set_title(f&quot;{key}&quot;)
+        ax.axis('off')
+
+    # Hide unused axes
+    for j in range(i + 1, len(axes)):
+        axes[j].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+# Plot all Canny edge detection results
+plot_canny_results(canny_results)</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="07_Linking_TPI_with_Canny_files/figure-jats/cell-29-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="fd4cfdc5-d8a5-485f-a609-175d6fc0f002-nb-5" specific-use="notebook-content">
+    <code language="python">## exporting rasters</code>
+    </sec>
+    <sec id="cell-52c89c15-6c2a-4b2b-8b45-015add70d743-nb-5" specific-use="notebook-content">
+    <code language="python">import rasterio
+from rasterio.transform import from_origin
+
+def export_raster(output_path, raster_data, reference_raster_path, crs=&quot;EPSG:6341&quot;):
+    &quot;&quot;&quot;
+    Export a raster to a GeoTIFF file with georeferencing.
+
+    Parameters:
+        output_path (str): Path to save the output GeoTIFF.
+        raster_data (numpy array): The raster data to export.
+        reference_raster_path (str): Path to a reference raster for georeferencing (e.g., DEM).
+        crs (str): Coordinate reference system (e.g., &quot;EPSG:6341&quot; for NAD 83 2011 UTM Zone 12N).
+
+    Returns:
+        None: Saves the GeoTIFF to the specified path.
+    &quot;&quot;&quot;
+    # Open the reference raster to get transform and resolution
+    with rasterio.open(reference_raster_path) as ref:
+        transform = ref.transform
+        profile = ref.profile
+        dtype = raster_data.dtype  # Ensure correct data type for writing
+    
+    # Update the profile for the new raster
+    profile.update({
+        'dtype': dtype,
+        'count': 1,
+        'crs': crs,
+        'transform': transform,
+        'nodata': 0  # Set nodata value, if applicable
+    })
+    
+    # Write the raster to GeoTIFF
+    with rasterio.open(output_path, 'w', **profile) as dst:
+        dst.write(raster_data, 1)  # Write data to the first band
+    print(f&quot;Raster exported to: {output_path}&quot;)</code>
+    </sec>
+    <sec id="cell-4891b137-9f02-4b61-8868-d0048b9af515-nb-5" specific-use="notebook-content">
+    <code language="python"># Path to save the output raster
+output_tpi_path = &quot;Data/TPI75_adaptive_threshold.tif&quot;
+dem_path = 'Data/USGS_1_n35w112_20240402.tif'
+
+# Export the thresholded TPI raster
+export_raster(output_tpi_path, tpi75_adaptive, dem_path)</code>
+    <boxed-text>
+      <preformat>Raster exported to: Data/TPI75_adaptive_threshold.tif</preformat>
+    </boxed-text>
+    </sec>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-18-nb-6">
+<front-stub>
+<title-group>
 <article-title>01 Prepare Test Data</article-title>
 </title-group>
 <contrib-group>
@@ -1084,14 +1893,14 @@ plt.show()</code>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-5" specific-use="notebook-content">
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-6" specific-use="notebook-content">
 <p>Text description</p>
 </sec>
-<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-5" specific-use="notebook-content">
+<sec id="cell-607644f4-99ab-4dd3-8644-5c9c7db8f0ed-nb-6" specific-use="notebook-content">
 <code language="python">## Install libraries if not installed
 #!pip install geopandas </code>
 </sec>
-<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-5" specific-use="notebook-content">
+<sec id="cell-09fabf9b-b61a-4d98-a9f1-75011eb2e0cb-nb-6" specific-use="notebook-content">
 <code language="python">import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1108,12 +1917,12 @@ from math import atan2, degrees
 from skimage.measure import approximate_polygon, find_contours
 </code>
 </sec>
-<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-5" specific-use="notebook-content">
+<sec id="edb011d8-2e65-4a8e-a02e-090b882a1192-nb-6" specific-use="notebook-content">
 <code language="python">DEM_URL = 'https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif'
 study_area_shapefile_path = 'Data/Vectors/LakeMaryStudyArea_Bound.shp'
 </code>
 </sec>
-<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-5" specific-use="notebook-content">
+<sec id="e6cc5047-d0fa-4123-8422-c7b633085b2d-nb-6" specific-use="notebook-content">
 <code language="python"># Load the DEM
 with rasterio.open(DEM_URL) as src:
     DEM = src.read(1)  # Load the DEM as a NumPy array
@@ -1128,11 +1937,11 @@ with rasterio.open(DEM_URL) as src:
 DEM nodata value: -999999.0</preformat>
 </boxed-text>
 </sec>
-<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-5" specific-use="notebook-content">
+<sec id="cd702850-f33a-47f3-974a-e1526cf91f57-nb-6" specific-use="notebook-content">
 <code language="python">study_area = gpd.read_file(study_area_shapefile_path)
 </code>
 </sec>
-<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-5" specific-use="notebook-content">
+<sec id="cell-27d11f03-2735-4c58-968a-8de01267ca91-nb-6" specific-use="notebook-content">
 <code language="python"># Reproject the shapefile to match DEM CRS
 study_area = study_area.to_crs(crs)
 print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
@@ -1140,21 +1949,21 @@ print(&quot;Shapefile bounds:&quot;, study_area.total_bounds)</code>
   <preformat>Shapefile bounds: [-111.62501107   35.12500537 -111.56251105   35.18750538]</preformat>
 </boxed-text>
 </sec>
-<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-5" specific-use="notebook-content">
+<sec id="b9b2d1ee-3ede-4296-bfed-b18bfbc859fd-nb-6" specific-use="notebook-content">
 <code language="python"># Clip the DEM to the shapefile geometry
 geoms = study_area.geometry.values  # Get the geometries from the GeoDataFrame
 geoms = [geom.__geo_interface__ for geom in geoms]  # Convert to GeoJSON format</code>
 </sec>
-<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-5" specific-use="notebook-content">
+<sec id="cell-6ac8eee7-513e-4fd5-8331-4da00aaada2a-nb-6" specific-use="notebook-content">
 <code language="python">with rasterio.open(DEM_URL) as src:
     out_image, out_transform = mask(src, geoms, crop=True)
     out_meta = src.meta</code>
 </sec>
-<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-5" specific-use="notebook-content">
+<sec id="cell-21267ce0-c84c-4273-917f-5ee5b8b2665f-nb-6" specific-use="notebook-content">
 <code language="python"># Mask the nodata values
 out_image = np.ma.masked_equal(out_image, nodata)</code>
 </sec>
-<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-5" specific-use="notebook-content">
+<sec id="cell-30b3018d-2301-48b0-a212-680978355241-nb-6" specific-use="notebook-content">
 <code language="python"># Check DEM range
 print(&quot;DEM min:&quot;, np.min(out_image))
 print(&quot;DEM max:&quot;, np.max(out_image))</code>
@@ -1163,7 +1972,7 @@ print(&quot;DEM max:&quot;, np.max(out_image))</code>
 DEM max: 2179.7163</preformat>
 </boxed-text>
 </sec>
-<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-5" specific-use="notebook-content">
+<sec id="cell-85026ebe-efa8-4459-b499-a19448df5458-nb-6" specific-use="notebook-content">
 <code language="python"># Normalize the DEM values for better visualization
 norm = colors.Normalize(vmin=np.min(out_image), vmax=np.max(out_image))
 
@@ -1182,7 +1991,7 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-12-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-5" specific-use="notebook-content">
+<sec id="aedc8b5b-13e6-442c-9cd2-998921b45c10-nb-6" specific-use="notebook-content">
 <code language="python"># Update metadata to reflect new dimensions and transform
 out_meta.update({
     &quot;driver&quot;: &quot;GTiff&quot;,
@@ -1191,7 +2000,7 @@ out_meta.update({
     &quot;transform&quot;: out_transform
 })</code>
 </sec>
-<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-5" specific-use="notebook-content">
+<sec id="cell-1b32e4e3-2d36-4e12-a3e7-e786d4ee6e99-nb-6" specific-use="notebook-content">
 <code language="python"># Save the clipped DEM
 output_path = &quot;Data/Rasters/clipped_dem.tif&quot;
 with rasterio.open(output_path, 'w', **out_meta) as dest:
@@ -1202,7 +2011,7 @@ print(f&quot;Clipped DEM saved to {output_path}&quot;)</code>
   <preformat>Clipped DEM saved to Data/Rasters/clipped_dem.tif</preformat>
 </boxed-text>
 </sec>
-<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-5" specific-use="notebook-content">
+<sec id="cad2a85f-922d-4ce0-a77a-a6c9e16c010b-nb-6" specific-use="notebook-content">
 <code language="python">DEM10m = out_image
 
 # Optionally, plot the clipped DEM
@@ -1218,7 +2027,7 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-15-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-5" specific-use="notebook-content">
+<sec id="c451d634-1d77-4e6f-ae09-7802e8975b14-nb-6" specific-use="notebook-content">
 <code language="python"># Load Faults
 
 faults_URL = 'Data/Vectors/Faults.shp'
@@ -1237,7 +2046,7 @@ print(&quot;Shapefile bounds:&quot;, contacts.total_bounds)</code>
 Shapefile bounds: [-111.62501107   35.12500543 -111.56251097   35.18750938]</preformat>
 </boxed-text>
 </sec>
-<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-5" specific-use="notebook-content">
+<sec id="cell-89cf3e97-159f-492f-98b9-aefa4e8692c7-nb-6" specific-use="notebook-content">
 <code language="python"># Plot the clipped DEM, study area, and faults
 fig, ax = plt.subplots(figsize=(10, 10))
 
@@ -1262,10 +2071,10 @@ plt.show()</code>
   <graphic mimetype="image" mime-subtype="png" xlink:href="01_Prepare-Test-Data_files/figure-jats/cell-17-output-1.png" />
 </boxed-text>
 </sec>
-<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-5" specific-use="notebook-content">
+<sec id="cell-62076a0b-f8a0-41ad-b38d-4e4ec72ab134-nb-6" specific-use="notebook-content">
 <code language="python"># create multiple hillshades </code>
 </sec>
-<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-5" specific-use="notebook-content">
+<sec id="edf1d3b3-c8c5-46d9-b171-0f6dc0abc742-nb-6" specific-use="notebook-content">
 <code language="python"># Function to apply Gaussian smoothing and Canny edge detection
 def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
     # Step 1: Replace masked values (nodata) with the median of the valid data
@@ -1283,7 +2092,7 @@ def apply_canny_filter(dem_data, mask, sigma=2.0, gthr_low=10, gthr_high=30):
     # Return both smoothed DEM and detected edges for visualization
     return smoothed_dem, edges</code>
 </sec>
-<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-5" specific-use="notebook-content">
+<sec id="cell-136b91b7-29bf-4c25-a1fc-20a6e9421e85-nb-6" specific-use="notebook-content">
 <code language="python"># Example parameters for the Canny filter
 sigma = 1.0
 gthr_low = 3
@@ -1296,7 +2105,7 @@ mask = dem_data.mask  # Extract the mask from the masked array
 # Apply the Canny filter
 smoothed_dem, edges = apply_canny_filter(dem_data, mask, sigma=sigma, gthr_low=gthr_low, gthr_high=gthr_high)</code>
 </sec>
-<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-5" specific-use="notebook-content">
+<sec id="eed97fb6-07ce-4014-abb3-87c196cff99f-nb-6" specific-use="notebook-content">
 <code language="python"># Plot the results
 fig, ax = plt.subplots(1, 2, figsize=(12, 6))
 
@@ -1323,7 +2132,392 @@ plt.show()</code>
 
 
 </sub-article>
-<sub-article article-type="notebook" id="nb-18-nb-6">
+<sub-article article-type="notebook" id="nb-21-nb-7">
+<front-stub>
+<title-group>
+<article-title>06 Line Linking</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-5352-7215</contrib-id>
+<name>
+<surname>Lima</surname>
+<given-names>Ryan E</given-names>
+</name>
+<string-name>Ryan E Lima</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<sec id="acfc87b1-4137-4ee0-a4e8-51cd21805ea5-nb-7" specific-use="notebook-content">
+<sec id="rose-diagrams-nb-7">
+  <title>Rose Diagrams</title>
+  <p>A rose diagram is a circular histogram used to represent the
+  frequency of data in various directional bins. In geology, it is
+  particularly useful for visualizing orientations.</p>
+  <p>Rose diagrams are commonly employed in geology to:</p>
+  <list list-type="order">
+    <list-item>
+      <p><bold>Visualize Lineaments:</bold> Represent the orientation of
+      faults, fractures, or structural features.</p>
+    </list-item>
+    <list-item>
+      <p><bold>Analyze Wind or Water Flow Patterns:</bold> Determine
+      prevailing directions of wind or currents from sedimentary
+      structures.</p>
+    </list-item>
+    <list-item>
+      <p><bold>Study Joint Sets:</bold> Analyze sets of joints or
+      bedding plane orientations.</p>
+    </list-item>
+    <list-item>
+      <p><bold>Paleocurrent Analysis:</bold> Determine ancient flow
+      directions based on sedimentary structures.</p>
+    </list-item>
+  </list>
+  </sec>
+  <sec id="cell-14dcb1ae-0a6c-413a-acad-8df14c3edeba-nb-7" specific-use="notebook-content">
+  <sec id="steps-to-creating-a-rose-diagram-nb-7">
+    <title>Steps to creating a Rose Diagram</title>
+    <p><italic>In simple terms</italic></p>
+    <p>You want calculate bearings for the linear data either the
+    bearing of the whole line, or by dividing the line into segments at
+    the verticies and calculating bearings of each of the line segments.
+    Then you want to imagine a circle divided into slices like a pizza
+    or a pie, and count how many lines fall into each slice making each
+    slice shorter or taller based on the count. Arrange the slices in a
+    circular pattern so the directions line up with their respective
+    angles.</p>
+    <list list-type="order">
+      <list-item>
+        <p><bold>Understand the data</bold></p>
+      </list-item>
+    </list>
+    <p><bold>What are you trying to understand about your data?</bold>
+    For our purposes we want to understand more about the karst
+    subsurface. We know that sink holes, caves, and other conduits can
+    form in karst, and they typically form along faults, fractures, or
+    joints where the weaknesses of the rock are exploited by water. So
+    we are trying to understand the structure of the subsurface by
+    looking at how the subsurface impacts the morphology at the surface.
+    We also want to test weather automated or semi-automted lineament
+    detection methods are useful or trustworthy, so we want to know how
+    the detected lineaments match with the known faults and orientation
+    is something useful to compare.</p>
+    <p><bold>What does our data look like?</bold> Our mapped faults are
+    polyline shapfiles, and our detected lineaments are also polyline
+    shapefiles. They are made up of linear segments connected by
+    verticies. ArcGIS Pro has a calculate geometry tool that allows you
+    to calculate the bearing of a line or polyline. Should we calculate
+    the bearing across the whole line or break the line into segments
+    splitting each at its verticies and then calculate bearings? To
+    answer this question we should look at what the calculate geometry
+    tool does?</p>
+    <p><bold>How calculate bearings works</bold> The
+    <monospace>Calculate Geometry Attributes</monospace> tool in ArcGIS
+    Pro determines the bearing of the polyline using the direction of
+    the straight line connecting the start and end points of the
+    polyline. Therefore it does not calculate the average bearing along
+    the line’s path. It calculates a bearing representing a straight
+    line segment from the start point to the end point, bearing is
+    meared clockwise from a reference direction of north
+    <inline-formula><alternatives>
+    <tex-math><![CDATA[0^{\circ}]]></tex-math>
+    <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mn>0</mml:mn><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula>.
+    To calculate the average or dominant bearing you need to split the
+    line at verticies and use a mathematical or statistical approach to
+    average the bearings. So end-to-end bearings are more useful for
+    regional trends.</p>
+    <list list-type="order">
+      <list-item>
+        <label>3.</label>
+        <p><bold>Grouping into Directional Bins</bold></p>
+      </list-item>
+      <list-item>
+        <label>4.</label>
+        <p><bold>Counting Frequencies</bold></p>
+      </list-item>
+      <list-item>
+        <label>5.</label>
+        <p><bold>Normalizing</bold> (optional)</p>
+      </list-item>
+      <list-item>
+        <label>6.</label>
+        <p><bold>Plotting on a circular grid</bold></p>
+      </list-item>
+      <list-item>
+        <label>7.</label>
+        <p><bold>Orienting the Diagram</bold></p>
+      </list-item>
+    </list>
+    </sec>
+    <sec id="cell-32671a9d-2b63-4053-b3ff-4e631d6b8693-nb-7" specific-use="notebook-content">
+  </sec>
+  <sec id="create-a-rose-diagram-with-synthetic-data-nb-7">
+    <title>Create a rose diagram with synthetic data</title>
+    </sec>
+    <sec id="cell-5393a61f-f5e8-49ca-b287-c840a51ad893-nb-7" specific-use="notebook-content">
+    <code language="python"># Install required packages</code>
+    </sec>
+    <sec id="cell-81e2091d-95c9-4a21-b804-56e02ef166d1-nb-7" specific-use="notebook-content">
+    <code language="python"># Load Libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt</code>
+    </sec>
+    <sec id="cell-702628f1-8f3a-420d-ba1d-ea5068b5587d-nb-7" specific-use="notebook-content">
+    <code language="python">data = {'bearings': [10, 20, 30, 45, 90, 90, 100, 150, 180, 270, 330, 340]}
+df = pd.DataFrame(data)
+
+# Convert bearings to radians
+radians = np.deg2rad(df['bearings'])
+
+# Create bins (e.g., 22.5° intervals) (N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW)
+num_bins = 16  # 360° divided by 22.5°
+bin_edges = np.linspace(0, 2 * np.pi, num_bins + 1)
+bin_counts, _ = np.histogram(radians, bins=bin_edges)
+
+# Create the rose diagram
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+theta = bin_edges[:-1]  # Bin centers
+width = 2 * np.pi / num_bins
+ax.bar(theta, bin_counts, width=width, align='edge', edgecolor='black')
+
+# Add labels and title
+ax.set_theta_zero_location('N')  # North at the top
+ax.set_theta_direction(-1)  # Clockwise direction
+plt.title('Rose Diagram')
+plt.show()</code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="06_Rose_Diagrams_files/figure-jats/cell-4-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-07b69b4f-ddb2-47c4-a03c-74a282477f73-nb-7" specific-use="notebook-content">
+  </sec>
+  <sec id="lets-create-some-functions-to-make-this-whole-process-easier-nb-7">
+    <title>Lets create some functions to make this whole process
+    easier</title>
+    </sec>
+    <sec id="b70617e8-1ae5-46d2-a22f-f7913ba4b9f9-nb-7" specific-use="notebook-content">
+    <code language="python">import geopandas as gpd
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from shapely.geometry import LineString
+import shapely.wkt</code>
+    </sec>
+    <sec id="cell-34260690-38f9-490a-9c1e-44eb48e0500c-nb-7" specific-use="notebook-content">
+    <code language="python">def preprocess_geometry(gdf):
+    &quot;&quot;&quot;
+    Converts geometries to simple 2D LineString by dropping Z and M components.
+    Handles both LineString and MultiLineString geometries.
+
+    Args:
+    - gdf: GeoDataFrame with geometries.
+
+    Returns:
+    - GeoDataFrame with 2D LineString geometries.
+    &quot;&quot;&quot;
+    def to_2d(geometry):
+        if geometry is None:
+            return None
+        elif geometry.geom_type == &quot;LineString&quot;:
+            # Convert LineString to 2D
+            return LineString([(x, y) for x, y, *_ in geometry.coords])
+        elif geometry.geom_type == &quot;MultiLineString&quot;:
+            # Convert MultiLineString to 2D by processing each sub-geometry
+            lines = [
+                LineString([(x, y) for x, y, *_ in line.coords])
+                for line in geometry.geoms
+            ]
+            return shapely.geometry.MultiLineString(lines)
+        else:
+            raise ValueError(f&quot;Unsupported geometry type: {geometry.geom_type}&quot;)
+
+    # Apply the conversion to the geometry column
+    gdf = gdf.copy()
+    gdf['geometry'] = gdf['geometry'].apply(to_2d)
+    return gdf</code>
+    </sec>
+    <sec id="a9ea4760-1364-4919-b1ef-198fb0ab005c-nb-7" specific-use="notebook-content">
+    <code language="python"># Path to your shapefile
+Contacts_path = r'C:\Users\rl587\GIS_Projects\ATUR_Lineaments_NAZ\LMSA\Mapped_Geology\Contacts\Contacts.zip'
+
+# Load the shapefile
+gdf = gpd.read_file(Contacts_path)
+
+# Preprocess to ensure geometries are 2D LineString
+gdf = preprocess_geometry(gdf)</code>
+    </sec>
+    <sec id="cell-0f2d12eb-51cf-49e0-b21d-edef88d27973-nb-7" specific-use="notebook-content">
+    <code language="python">def create_rose_diagram(dataframe, bearing_column, bin_width=22.5, bar_color='blue', title=&quot;Rose Diagram&quot;):
+    &quot;&quot;&quot;
+    Creates a rose diagram from a dataframe with directional data.
+
+    Args:
+    - dataframe: pandas DataFrame containing the bearing data.
+    - bearing_column: str, name of the column containing bearings in degrees.
+    - bin_width: int, width of each bin in degrees (default is 22.5).
+    - bar_color: str, color of the bars.
+    - title: str, title of the rose diagram.
+
+    Returns:
+    - A rose diagram plot.
+    &quot;&quot;&quot;
+    bearings = dataframe[bearing_column]
+
+    # Convert bearings to radians
+    radians = np.deg2rad(bearings)
+
+    # Calculate bins and counts
+    num_bins = int(360 / bin_width)
+    bin_edges = np.linspace(0, 2 * np.pi, num_bins + 1)
+    bin_counts, _ = np.histogram(radians, bins=bin_edges)
+
+    # Plot the rose diagram
+    fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}, figsize=(8, 8))
+    theta = bin_edges[:-1]  # Bin start angles
+    width = 2 * np.pi / num_bins  # Bin angular width
+    bars = ax.bar(theta, bin_counts, width=width, color=bar_color, edgecolor='black', alpha=0.7)
+
+    # Add directional annotations
+    directions = [
+        'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
+        'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
+    ]
+    for i, direction in enumerate(directions):
+        angle = np.deg2rad(i * 22.5)
+        ax.text(angle, max(bin_counts) * 1.3, direction,  # Adjusted spacing with 1.3
+                horizontalalignment='center', verticalalignment='center')
+
+    ax.set_theta_zero_location('N')  # North at the top
+    ax.set_theta_direction(-1)  # Clockwise
+
+    # Set the title
+    plt.title(title, fontsize=16)
+    plt.show()
+    </code>
+    </sec>
+    <sec id="cell-24ceb6ec-c77d-418b-9cd4-6b06d8291dc1-nb-7" specific-use="notebook-content">
+    <code language="python">def plot_shapefile_with_rose_diagram(shapefile_path, bin_width=22.5, bar_color='blue', title=&quot;Shapefile and Rose Diagram&quot;):
+    &quot;&quot;&quot;
+    Plots a shapefile and its corresponding rose diagram side by side.
+
+    Args:
+    - shapefile_path: str, path to the shapefile.
+    - bin_width: int, width of the bins in degrees for the rose diagram.
+    - bar_color: str, color for the rose diagram bars.
+    - title: str, title for the rose diagram plot.
+
+    Returns:
+    - A plot with the shapefile and its rose diagram side by side.
+    &quot;&quot;&quot;
+    # Load shapefile and extract the dataframe and bearing column
+    dataframe, bearing_column = load_shapefile_to_dataframe(shapefile_path)
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 8))
+
+    # Plot the shapefile
+    gdf = gpd.read_file(shapefile_path)
+    gdf.plot(ax=axes[0], color=bar_color, linewidth=1)
+    axes[0].set_title('Shapefile Plot')
+    axes[0].axis('off')
+
+    # Create the rose diagram
+    bearings = dataframe[bearing_column]
+    radians = np.deg2rad(bearings)
+    num_bins = int(360 / bin_width)
+    bin_edges = np.linspace(0, 2 * np.pi, num_bins + 1)
+    bin_counts, _ = np.histogram(radians, bins=bin_edges)
+
+    ax = plt.subplot(122, projection='polar')
+    theta = bin_edges[:-1]  # Bin start angles
+    width = 2 * np.pi / num_bins  # Bin angular width
+    ax.bar(theta, bin_counts, width=width, color=bar_color, edgecolor='black', alpha=0.7)
+
+    # Add directional annotations
+    directions = [
+        'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
+        'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
+    ]
+    for i, direction in enumerate(directions):
+        angle = np.deg2rad(i * 22.5)
+        ax.text(angle, max(bin_counts) * 1.3, direction,
+                horizontalalignment='center', verticalalignment='center')
+
+    ax.set_theta_zero_location('N')  # North at the top
+    ax.set_theta_direction(-1)  # Clockwise
+
+    # Remove the external box frame
+    ax.spines['polar'].set_visible(False)
+
+    ax.set_title(title)
+    plt.tight_layout()
+    plt.show()</code>
+    </sec>
+    <sec id="f3db3918-fc98-44c4-b851-72d4d7e32512-nb-7" specific-use="notebook-content">
+    <code language="python">Contacts_path = r'C:\Users\rl587\GIS_Projects\ATUR_Lineaments_NAZ\LMSA\Mapped_Geology\Contacts\Contacts.zip'
+
+# Create a rose diagram with a custom title
+df, bearing_column = load_shapefile_to_dataframe(Contacts_path)
+#create_rose_diagram(df, bearing_column=bearing_column, bar_color='green', title=&quot;Contact Orientation Rose Diagram&quot;)
+
+# Plot shapefile with rose diagram and custom title
+plot_shapefile_with_rose_diagram(Contacts_path, bar_color='green', title=&quot;Contact Lineaments&quot;)
+    </code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="06_Rose_Diagrams_files/figure-jats/cell-10-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-4c572d47-034f-4160-a5f9-db0f73d7a031-nb-7" specific-use="notebook-content">
+    <code language="python">Faults_path = r'C:\Users\rl587\GIS_Projects\ATUR_Lineaments_NAZ\LMSA\Mapped_Geology\Faults\Faults.zip'
+
+# Create a rose diagram with a custom title
+df, bearing_column = load_shapefile_to_dataframe(Faults_path)
+#create_rose_diagram(df, bearing_column=bearing_column, bin_width=10, bar_color='red', title=&quot;Fault Orientation Rose Diagram&quot;)
+
+# Plot shapefile with rose diagram
+plot_shapefile_with_rose_diagram(Faults_path, bin_width=22.5, bar_color='red',  title=&quot;Fault Lineaments&quot;)
+    </code>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="06_Rose_Diagrams_files/figure-jats/cell-11-output-1.png" />
+    </boxed-text>
+    </sec>
+    <sec id="cell-0d0303d7-bcc4-4234-a0cd-3d11332fa3fe-nb-7" specific-use="notebook-content">
+    <code language="python">Flowlines_path = r'C:\Users\rl587\GIS_Projects\ATUR_Lineaments_NAZ\LMSA\Mapped_Geology\NHD_flowlines\NHD_flowlines.zip'
+
+# Create a rose diagram with a custom title
+df, bearing_column = load_shapefile_to_dataframe(Flowlines_path)
+#create_rose_diagram(df, bearing_column=bearing_column, bin_width=10, bar_color='blue', title=&quot;Flowline Orientation Rose Diagram&quot;)
+
+# Plot shapefile with rose diagram
+plot_shapefile_with_rose_diagram(Flowlines_path, bin_width=22.5, bar_color='blue', title = &quot;Flowline Lineaments&quot;)</code>
+    <boxed-text>
+      <preformat>C:\Users\rl587\AppData\Local\anaconda3\envs\ATUR-KARST\lib\site-packages\pyogrio\raw.py:198: UserWarning: Measured (M) geometry types are not supported. Original type 'Measured 3D LineString' is converted to 'LineString Z'
+  return ogr_read(
+C:\Users\rl587\AppData\Local\anaconda3\envs\ATUR-KARST\lib\site-packages\pyogrio\raw.py:198: UserWarning: Measured (M) geometry types are not supported. Original type 'Measured 3D LineString' is converted to 'LineString Z'
+  return ogr_read(
+C:\Users\rl587\AppData\Local\anaconda3\envs\ATUR-KARST\lib\site-packages\pyogrio\raw.py:198: UserWarning: Measured (M) geometry types are not supported. Original type 'Measured 3D LineString' is converted to 'LineString Z'
+  return ogr_read(</preformat>
+    </boxed-text>
+    <boxed-text>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="06_Rose_Diagrams_files/figure-jats/cell-12-output-2.png" />
+    </boxed-text>
+    </sec>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-24-nb-8">
 <front-stub>
 <title-group>
 <article-title>00 Project Overview</article-title>
@@ -1342,11 +2536,11 @@ plt.show()</code>
 </front-stub>
 
 <body>
-<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-6" specific-use="notebook-content">
+<sec id="cell-96cd123b-e010-4778-9afa-9ca125ef50cc-nb-8" specific-use="notebook-content">
 <p>Project description</p>
 </sec>
-<sec id="cell-4f8e5259-5be3-46e9-abfa-b73c11a53ec2-nb-6" specific-use="notebook-content">
-<sec id="resources-nb-6">
+<sec id="cell-4f8e5259-5be3-46e9-abfa-b73c11a53ec2-nb-8" specific-use="notebook-content">
+<sec id="resources-nb-8">
   <title>Resources</title>
   <list list-type="bullet">
     <list-item>
