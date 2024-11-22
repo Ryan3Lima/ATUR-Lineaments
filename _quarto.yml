@@ -8,6 +8,10 @@ format:
   jats: default
   docx: default
   agu-pdf: default
+hooks:
+  postRender:
+    - |
+      pwsh -Command "& { Compress-Archive -Path @( 'manifest.xml', 'index.xml', 'index.pdf', 'index.docx' ) -DestinationPath 'output.zip' }"
 
 
 
